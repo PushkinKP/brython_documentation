@@ -10,7 +10,7 @@ Partie 1  :
 Collecte de données : 
 - Vérification des traductions (anglais/français...)
 - Recherche des parties cachées 
--
+- Vérification du bon fonctionnement des liens
 
 Visualisation : 
 - Etats des lieux sur Power BI : Présentation du nombres d'utilisateurs quotidien sur chaque page...)
