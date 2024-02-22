@@ -32,6 +32,10 @@ Nous utilisons le langage Python pour la collecte de données du site de Brython
 
 [Time](https://docs.python.org/fr/3/library/time.html) est une bibliothèque permettant de faire en majorité des pauses dans un programme.
 
+`pip install time`
+
 ### NetworkX
 
 [NetworkX](https://networkx.org/documentation/stable/tutorial.html) est une bibliothèque qui permet de faire des graphiques orientés notamment pour la visualisation des liens et dépendances du site Brython.
+
+`pip install networkx`
