@@ -18,13 +18,13 @@ Nous utilisons le langage Python pour la collecte de données du site de Brython
 
 ### Pandas 
 
-[Pandas](https://pandas.pydata.org/) ets un bibliothèque qui à pour principales utiliés la manipulation, le nettoyage, l'analyse et la visualisation des données tabulaires.
+[Pandas](https://pandas.pydata.org/) est une bibliothèque qui à pour principales utiliés la manipulation, le nettoyage, l'analyse et la visualisation des données tabulaires.
 
 `pip install pandas`
 
 ### LangDetect
 
-[LangDetect](https://pypi.org/project/langdetect/) est une des bibliothèque principales de ce projet, son but est de traduire une chaine de caractère.
+[LangDetect](https://pypi.org/project/langdetect/) est une des bibliothèques principale de ce projet, son but est d'identifier la langue d'une chaine de caractère.
 
 `pip install langdetect`
 
