@@ -163,7 +163,7 @@ def detection_langue() :
                 if count == len(langue_detect_1) :
                     print("\n")
                     print('La page "Tutoriel" est traduite correctement')
-            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
+            print("Les langues détectées sur la page 'Tutoriel' sont : " + str(langue_detect))
         
         elif j == 2 :
             for i in range (1, length + 1, 1) : 
@@ -221,7 +221,7 @@ def detection_langue() :
                 if count == len(langue_detect_1) :
                     print("\n")
                     print('La page "Demo" est traduite correctement')
-            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
+            print("Les langues détectées sur la page 'Demo' sont : " + str(langue_detect))
         
         elif j == 3 :
             for i in range (1, length + 1, 1) : 
@@ -279,7 +279,7 @@ def detection_langue() :
                 if count == len(langue_detect_1) :
                     print("\n")
                     print('La page "Documentation" est traduite correctement')
-            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
+            print("Les langues détectées sur la page 'Documentation' sont : " + str(langue_detect))
         
         elif j == 4 :
             for i in range (1, length + 1, 1) : 
@@ -337,7 +337,7 @@ def detection_langue() :
                 if count == len(langue_detect_1) :
                     print("\n")
                     print('La page "Gallerie" est traduite correctement')
-            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
+            print("Les langues détectées sur la page 'Gallerie' sont : " + str(langue_detect))
         
     driver.quit()
 
