@@ -91,20 +91,21 @@ def detection_langue() :
             sleep(2)
 
             count = 0
+            langue_detect = ""
 
             for i in range (0, len(langue_detect_1), 1) :
-                langue_detect = str(langue_detect_1[i])
+                langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
                 if langue_detect_1[i] == langue_detect_2[i] :
                     count = count + 1
                 else :
                     print("\n")
-                    print('La page ' + str(j+1) + ' n\'est pas traduite correctement')
+                    print('La page principale n\'est pas traduite correctement')
                     print("La ou l'une des erreurs proviens de la langue : " + langue_detect_1[i])
                 
                 if count == len(langue_detect_1) :
                     print("\n")
-                    print('La page ' + str(j+1) + ' est traduite correctement')
-                    print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
+                    print('La page principale est traduite correctement')
+            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
 
         elif j == 1 :
             for i in range (1, length + 1, 1) : 
@@ -148,18 +149,21 @@ def detection_langue() :
             sleep(1)
 
             count = 0
+            langue_detect = ""
 
             for i in range (0, len(langue_detect_1), 1) :
+                langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
                 if langue_detect_1[i] == langue_detect_2[i] :
                     count = count + 1
                 else :
                     print("\n")
-                    print('La page ' + str(j+1) + ' n\'est pas traduite correctement')
+                    print('La page "Tutoriel" n\'est pas traduite correctement')
                     print("La ou l'une des erreurs proviens de la langue : " + langue_detect_1[i])
                 
                 if count == len(langue_detect_1) :
                     print("\n")
-                    print('La page ' + str(j+1) + ' est traduite correctement')
+                    print('La page "Tutoriel" est traduite correctement')
+            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
         
         elif j == 2 :
             for i in range (1, length + 1, 1) : 
@@ -176,7 +180,7 @@ def detection_langue() :
                 selection.select_by_index(i)
                 sleep(0.5)   
                 #Spécification pour chaque page 
-                chain = driver.find_element(by = By.XPATH, value = '//*[@id="home"]/p[1]/text()').text
+                chain = driver.find_element(by = By.XPATH, value = '//*[@id="home"]').text
 
                 langue2 = detect(str(chain))
                 if langue2 == 'fr' :
@@ -203,18 +207,21 @@ def detection_langue() :
             sleep(2)
 
             count = 0
+            langue_detect = ""
 
             for i in range (0, len(langue_detect_1), 1) :
+                langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
                 if langue_detect_1[i] == langue_detect_2[i] :
                     count = count + 1
                 else :
                     print("\n")
-                    print('La page ' + str(j+1) + ' n\'est pas traduite correctement')
+                    print('La page  "Demo" n\'est pas traduite correctement')
                     print("La ou l'une des erreurs proviens de la langue : " + langue_detect_1[i])
                 
                 if count == len(langue_detect_1) :
                     print("\n")
-                    print('La page ' + str(j+1) + ' est traduite correctement')
+                    print('La page "Demo" est traduite correctement')
+            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
         
         elif j == 3 :
             for i in range (1, length + 1, 1) : 
@@ -231,7 +238,7 @@ def detection_langue() :
                 selection.select_by_index(i)
                 sleep(1)   
                 #Spécification pour chaque page 
-                chain = driver.find_element(by = By.XPATH, value = '//*[@id="content"]/text()[2]').text
+                chain = driver.find_element(by = By.XPATH, value = '//*[@id="content"]/blockquote[2]').text
 
                 langue2 = detect(str(chain))
                 if langue2 == 'fr' :
@@ -258,18 +265,21 @@ def detection_langue() :
             sleep(2)
 
             count = 0
+            langue_detect = ""
 
             for i in range (0, len(langue_detect_1), 1) :
+                langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
                 if langue_detect_1[i] == langue_detect_2[i] :
                     count = count + 1
                 else :
                     print("\n")
-                    print('La page ' + str(j+1) + ' n\'est pas traduite correctement')
+                    print('La page "Documentation" n\'est pas traduite correctement')
                     print("La ou l'une des erreurs proviens de la langue : " + langue_detect_1[i])
                 
                 if count == len(langue_detect_1) :
                     print("\n")
-                    print('La page ' + str(j+1) + ' est traduite correctement')
+                    print('La page "Documentation" est traduite correctement')
+            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
         
         elif j == 4 :
             for i in range (1, length + 1, 1) : 
@@ -313,18 +323,21 @@ def detection_langue() :
             sleep(2)
 
             count = 0
+            langue_detect = ""
 
             for i in range (0, len(langue_detect_1), 1) :
+                langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
                 if langue_detect_1[i] == langue_detect_2[i] :
                     count = count + 1
                 else :
                     print("\n")
-                    print('La page ' + str(j+1) + ' n\'est pas traduite correctement')
+                    print('La page "Gallerie" n\'est pas traduite correctement')
                     print("La ou l'une des erreurs proviens de la langue : " + langue_detect_1[i])
                 
                 if count == len(langue_detect_1) :
                     print("\n")
-                    print('La page ' + str(j+1) + ' est traduite correctement')
+                    print('La page "Gallerie" est traduite correctement')
+            print("Les langues détectées sur la page " + str(j+1) + " sont : " + str(langue_detect))
         
     driver.quit()
 
