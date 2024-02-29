@@ -16,7 +16,7 @@ from langdetect import detect
 
 # Scrapping
 
-#Page 1 du site Brython
+
 
 def detection_langue() :
 
