@@ -1,8 +1,5 @@
 # Collecte de données sur Brython - Détection des pages traduitent
-
 # Clément Husson 
-
-# Packages 
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -75,24 +72,18 @@ def detection_langue() :
             #Spécification pour chaque page 
             String = driver.find_element(by = By.XPATH, value = liste_Xpath[j]).text
 
-            langue2 = detect(str(String))
-            if langue2 == 'fr' :
-                langue2 = 'Français'
-            elif langue2 == 'en' :  
-                langue2 = 'English'
-            elif langue2 == 'es' :
-                langue2 = 'Español'
-            elif langue2 == 'de' :
-                langue2 = 'Deutsch'
-            elif langue2 == 'it' :
-                langue2 = 'Italiano'
-            elif langue2 == 'pt' :
-                langue2 = 'Portuguese (Br.)'
-            elif langue2 == 'nl' :
-                langue2 = 'Nederlands'
-            elif langue2 == 'no' :
-                langue2 = 'Brezhoneg'
-
+            langue_dict = {
+                'fr': 'Français',
+                'en': 'English',
+                'es': 'Español',
+                'de': 'Deutsch',
+                'it': 'Italiano',
+                'pt': 'Portuguese (Br.)',
+                'nl': 'Nederlands',
+                'no': 'Brezhoneg'
+            }
+            langue2 = langue_dict.get(detect(str(String)))
+            
             langue_detect_2.append(langue2)
             #print('La langue détecté sur le site est :')
             #print(langue2)
