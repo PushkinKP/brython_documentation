@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brython Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Brython Documentation</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#examples">Examples</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Welcome to the Brython documentation! Here, you will find all the necessary information to get started with Brython, a modern implementation of Python 3 that runs in the browser.
+            </p>
+            <p>
+                Brython allows you to write web applications in Python, using the same syntax and semantics as the popular programming language. It provides an alternative to JavaScript, making it easier for Python developers to create web applications without learning a new language.
+            </p>
+        </section>
+
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+            <p>
+                To start using Brython, follow these steps:
+            </p>
+            <ol>
+                <li>
+                    <p>
+                        Include the Brython library in your HTML file. You can use a CDN to load Brython, such as:
+                    </p>
+                    <pre><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython.min.js"&gt;&lt;/script&gt;</code></pre>
+                </li>
+                <li>
+                    <p>
+                        Call the Brython <code>brython()</code> function to initialize it. It is recommended to call this function after the page has finished loading, for example, by adding an onload attribute to the <code>body</code> tag:
+                    </p>
+                    <pre><code>&lt;body onload="brython()"&gt;&lt;/body&gt;</code></pre>
+                </li>
+                <li>
+                    <p>
+                        Write your Brython code within <code>&lt;script&gt;</code> tags. Make sure to specify the language as "text/python" and include the <code>type="text/python"</code> attribute:
+                    </p>
+                    <pre><code>&lt;script type="text/python"&gt;
+                        print("Hello, World!")
+                    &lt;/script&gt;</code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <section id="tutorials">
+            <h2>Tutorials</h2>
+            <p>
+                Coming soon...
+            </p>
+        </section>
+
+        <section id="examples">
+            <h2>Examples</h2>
+            <p>
+                Coming soon...
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Brython Documentation. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython_stdlib"></script>

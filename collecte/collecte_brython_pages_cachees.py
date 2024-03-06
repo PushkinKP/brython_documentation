@@ -21,6 +21,12 @@ driver.get("https://brython.info/index.html")
 
 sleep(2)
 
+# A refaire en utilisant les selecteurs CSS, en faisant un "tableau"/dictionnaire pour les pages(redemander à Denis) 
+# Pages cachées = liens dans les pages qui ne sont pas visibles(c-à-d pas dans les selecteurs)
+#   |   |
+#   |   |
+#   v   v
+
 links = []
 len_links = []
 for i in range(1,7): 
@@ -61,4 +67,20 @@ print(links, len_links)
 # Dans la page 2 'Démo' les selecteurs de pages sont en liste alors que dans la page 3 'Documentation' les selecteurs de pages sont en tableau (possible correction à apporter)
 # La page 7 'Ressources' n'est pas une page à part entière, on ne peut donc pas l'inclure dans la boucle
  
+
+ # Test
+
+links_pages = {
+    "Tutoriel": "banner_row > a:nth-child(2)", 
+    "Demo": "banner_row > a:nth-child(3)", 
+    "Documentation": "banner_row > a:nth-child(4)", 
+    "Console": "banner_row > a:nth-child(5)",
+    "Editeur": "banner_row > a:nth-child(6)",
+    "Galerie": "banner_row > a:nth-child(7)"}
+
+for i in links_pages:
+    page = driver.find_element(By.CSS_SELECTOR, links_pages[i]).click()
+    sleep(3)
+
+    
 sleep(10)
