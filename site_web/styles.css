@@ -11,6 +11,12 @@ header {
     background-color: #4CAF50;
     padding: 1rem;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
@@ -18,24 +24,29 @@ header h1 {
     margin: 0;
 }
 
-nav {
-    margin-bottom: 2rem;
+header nav {
+    display: inline-block;
 }
 
-nav ul {
+header nav ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav ul li a {
-    color: #4CAF50;
+header nav ul li {
+    margin-left: 1rem;
+}
+
+header nav a {
+    color: white;
     text-decoration: none;
 }
 
 main {
-    padding: 2rem;
+    padding-top: 5rem;
 }
 
 section {
@@ -47,24 +58,19 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-footer {
-    background-color: #4CAF50;
-    padding: 1rem;
-    text-align: center;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.numbered-list {
+    counter-reset: my-counter;
+    list-style-type: none;
+    padding: 0;
 }
 
-pre, code {
-    background-color: #f5f5f5;
-    padding: 0.5rem;
-    border-radius: 5px;
+.numbered-list li {
+    counter-increment: my-counter;
+    margin-bottom: 0.5rem;
 }
 
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
+.numbered-list li::before {
+    content: counter(my-counter) ". ";
+    color: #4CAF50;
+    margin-right: 0.5rem;
 }
