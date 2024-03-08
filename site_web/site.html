@@ -1,74 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brython Documentation</title>
+    <title>BRython Documentation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Brython Documentation</h1>
+        <h1>BRython</h1>
+        <nav>
+            <ul>
+                <li><a href="#tutoriel">Tutoriel</a></li>
+                <li><a href="#demo">Démo</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#console">Console</a></li>
+                <li><a href="#editeur">Editeur</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <nav>
-        <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#getting-started">Getting Started</a></li>
-            <li><a href="#tutorials">Tutorials</a></li>
-            <li><a href="#examples">Examples</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="introduction">
-            <h2>Introduction</h2>
-            <p>
-                Welcome to the Brython documentation! Here, you will find all the necessary information to get started with Brython, a modern implementation of Python 3 that runs in the browser.
-            </p>
-            <p>
-                Brython allows you to write web applications in Python, using the same syntax and semantics as the popular programming language. It provides an alternative to JavaScript, making it easier for Python developers to create web applications without learning a new language.
-            </p>
-        </section>
-
-        <section id="getting-started">
-            <h2>Getting Started</h2>
-            <p>
-                To start using Brython, follow these steps:
-            </p>
-            <ol>
-                <li>
-                    <p>
-                        Include the Brython library in your HTML file. You can use a CDN to load Brython, such as:
-                    </p>
-                    <pre><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython.min.js"&gt;&lt;/script&gt;</code></pre>
-                </li>
-                <li>
-                    <p>
-                        Call the Brython <code>brython()</code> function to initialize it. It is recommended to call this function after the page has finished loading, for example, by adding an onload attribute to the <code>body</code> tag:
-                    </p>
-                    <pre><code>&lt;body onload="brython()"&gt;&lt;/body&gt;</code></pre>
-                </li>
-                <li>
-                    <p>
-                        Write your Brython code within <code>&lt;script&gt;</code> tags. Make sure to specify the language as "text/python" and include the <code>type="text/python"</code> attribute:
-                    </p>
-                    <pre><code>&lt;script type="text/python"&gt;
-                        print("Hello, World!")
-                    &lt;/script&gt;</code></pre>
-                </li>
-            </ol>
-        </section>
-
-        <section id="tutorials">
-            <h2>Tutorials</h2>
+        <section id="tutoriel">
+            <h2>Tutoriel</h2>
             <p>
                 Coming soon...
             </p>
         </section>
 
-        <section id="examples">
-            <h2>Examples</h2>
+        <section id="demo">
+            <h2>Démo</h2>
+            <p>
+                Des horloges comme celle-ci, vous en avez sans doute déjà vu dans des démos d'HTML5. Maintenant, regardez le code source de cette page...
+            </p>
+            <p>
+                Vous ne verrez pas une ligne de Javascript, mais à la place, du code Python dans un script de type "text/python".
+            </p>
+            <ul class="numbered-list">
+                <li>Une implémentation de Python 3 pour la programmation web côté client</li>
+                <li>Des horloges comme celle-ci, vous en avez sans doute déjà vu dans des démos d'HTML5</li>
+                <li>Maintenant, regardez le code source de cette page...</li>
+                <li>Vous ne verrez pas une ligne de Javascript, mais à la place, du code Python dans un script de type "text/python"</li>
+                <li>Brython a pour objectif de remplacer Javascript comme langage de script des pages Web</li>
+                <li>Il s'agit donc d'une implémentation de Python 3 adaptée à l'environnement HTML5</li>
+                <li>C'est-à-dire dotée d'une interface avec les objets et les événements DOM</li>
+                <li>La vitesse d'exécution est comparable à celle de CPython pour la plupart des opérations</li>
+            </ul>
+        </section>
+
+        <section id="documentation">
+            <h2>Documentation</h2>
+            <p>
+                Coming soon...
+            </p>
+        </section>
+
+        <section id="console">
+            <h2>Console</h2>
+            <p>
+                Brython est une implémentation de Python 3 (que vous pouvez tester sur la console), adaptée à l'environnement HTML5, c'est-à-dire dotée d'une interface avec les objets et les événements DOM.
+            </p>
+        </section>
+
+        <section id="editeur">
+            <h2>Editeur</h2>
+            <p>
+                Coming soon...
+            </p>
+        </section>
+
+        <section id="galerie">
+            <h2>Galerie</h2>
+            <p>
+                Une galerie présente quelques démos de ce qu'il est possible de faire, depuis la création d'éléments simples jusqu'au glisser-déposer ou la navigation 3D.
+            </p>
+        </section>
+
+        <section id="ressources">
+            <h2>Ressources</h2>
             <p>
                 Coming soon...
             </p>
@@ -76,8 +86,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Brython Documentation. All rights reserved.</p>
+        <p>Copyright © 2023 BRython Documentation</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython_stdlib"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython_stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
