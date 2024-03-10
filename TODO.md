@@ -14,7 +14,7 @@ Collecte de données :
 - Vérification du bon fonctionnement des liens
 
 Visualisation : 
-- Etats des lieux avec Tinkercad : Présentation du nombres d'utilisateurs quotidien sur chaque page...
+- Etats des lieux avec TKinter : Présentation du nombres d'utilisateurs quotidien sur chaque page...
 
 
 ## Partie 2 :
