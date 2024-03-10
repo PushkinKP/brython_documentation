@@ -14,6 +14,7 @@ import pandas as pd
 from langdetect import detect
 
 
+#Fonction principale qui détecte la langue de chaque page du site internet
 def detection_langue() :
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -65,14 +66,14 @@ def detection_langue() :
 
         sleep(0.5)
 
-        #Boucle qui détecte la langue sélectionné de la page
+        #Boucle qui détecte la langue sélectionnée de la page (Ajout de l'information dans la liste : langue_detect_1)
         for i in range (1, length + 1, 1) : 
             xpath = '/html/body/div[2]/select/option[' + str(i) + ']'
             langue1 = driver.find_element(by=By.XPATH, value=str(xpath)).text
             langue_detect_1.append(langue1)
             sleep(0.5)
             
-        #Boucle qui détecte la langue de la page (spécifique à chaque page)
+        #Boucle qui détecte la langue de la page à partir du texte (spécifique à chaque page)
         for i in range (0, length, 1) : 
             selection = Select(driver.find_element(by=By.XPATH, value='/html/body/div[2]/select'))
             selection.select_by_index(i)
@@ -117,18 +118,19 @@ def detection_langue() :
                 for String in Strings : 
                     txt_page = txt_page +  str(String.text)
 
-
+            #On ajoute la langue détectée dans la liste : langue_detect_2
             langue2 = langue_dict.get(detect(str(txt_page)))
-            
             langue_detect_2.append(langue2)
-            #print('La langue détecté sur le site est :')
-            #print(langue2)
+
+            #L'obejctif est de comparer les deux listes (langue_detect_1 avec langue_detect_2) pour voir si la langue détectée est la bonne
 
         sleep(0.5)
 
+        #Le compteur (count) permet de vérifier si l'entièreté de la page est traduite correctement
         count = 0
         langue_detect = ""
 
+        #Boucle qui compare les deux listes pour vérifier si la langue détectée est la bonne
         for i in range (0, len(langue_detect_1), 1) :
             langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
             if langue_detect_1[i] == langue_detect_2[i] :
@@ -144,5 +146,7 @@ def detection_langue() :
         print("Les langues détectées sur la page "+ str(liste_name_page[j]) +" sont : " + str(langue_detect))
         
     driver.quit()
+
+    print("\n L'execution du programme est terminée")
 
 detection_langue()
