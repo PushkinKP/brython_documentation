@@ -1,6 +1,8 @@
-# Collecte de données sur Brython - Détection des pages traduitent
-# Clément Husson 
+#Collecte de données sur le site internet de Brython
 
+#Clément Husson
+
+#Importation des librairies
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -11,30 +13,38 @@ from time import sleep
 import pandas as pd 
 from langdetect import detect
 
-# Scrapping des pages
 
 def detection_langue() :
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
+    #Liste des liens à scrapper sur le site
     liste_des_liens = ["https://brython.info/index.html", 
                        "https://brython.info/static_tutorial/fr/index.html", 
                        "https://brython.info/demo.html",
                        "https://brython.info/static_doc/3.12/fr/intro.html",
                        "https://brython.info/gallery/gallery_fr.html",]
     
-    liste_Xpath = ["//*[@id='content']/table[2]/tbody/tr/td[1]/p[1]",
-                   '//*[@id="content"]/p[1]',
-                   '//*[@id="home"]',
-                   '//*[@id="content"]/blockquote[2]', 
-                   '//*[@id="demos"]/tbody/tr/td[2]/h3',]
-    
+    #Nom des pages 
     liste_name_page = ["Principale",
                        "Tutoriel",
                        "Démonstration",
                        "Documentation",
                        "Galerie",]
+    
+    #Dictionnaire des langues
+    langue_dict = {
+                    'fr': 'Français',
+                    'en': 'English',
+                    'es': 'Español',
+                    'de': 'Deutsch',
+                    'it': 'Italiano',
+                    'pt': 'Portuguese (Br.)',
+                    'nl': 'Nederlands',
+                    'no': 'Brezhoneg'
+                }
 
+    #Boucle principale pour chaque page
     for j in range (0, len(liste_des_liens), 1) : 
         lien = liste_des_liens[j]
         
@@ -55,34 +65,60 @@ def detection_langue() :
 
         sleep(0.5)
 
-        
+        #Boucle qui détecte la langue sélectionné de la page
         for i in range (1, length + 1, 1) : 
             xpath = '/html/body/div[2]/select/option[' + str(i) + ']'
             langue1 = driver.find_element(by=By.XPATH, value=str(xpath)).text
             langue_detect_1.append(langue1)
-            #print('La langue détecté sur la selection est :')
-            #print(langue1)
             sleep(0.5)
             
-
+        #Boucle qui détecte la langue de la page (spécifique à chaque page)
         for i in range (0, length, 1) : 
             selection = Select(driver.find_element(by=By.XPATH, value='/html/body/div[2]/select'))
             selection.select_by_index(i)
             sleep(0.5)   
-            #Spécification pour chaque page 
-            String = driver.find_element(by = By.XPATH, value = liste_Xpath[j]).text
 
-            langue_dict = {
-                'fr': 'Français',
-                'en': 'English',
-                'es': 'Español',
-                'de': 'Deutsch',
-                'it': 'Italiano',
-                'pt': 'Portuguese (Br.)',
-                'nl': 'Nederlands',
-                'no': 'Brezhoneg'
-            }
-            langue2 = langue_dict.get(detect(str(String)))
+            #Spécification pour chaque page 
+            if liste_name_page[j] == "Principale" or liste_name_page[j] == "Tutoriel" :
+                txt_page = ""
+                Strings = driver.find_elements(by = By.TAG_NAME, value = 'p')
+                for String in Strings : 
+                    txt_page = txt_page +  str(String.text)
+
+
+            elif liste_name_page[j] == "Démonstration" :
+                txt_page = ""
+                menu = driver.find_element(by = By.TAG_NAME, value = 'ul')
+                len_menu = menu.find_elements(by = By.TAG_NAME, value = 'li')
+                len_menu = len(len_menu)
+                for k in range (0, len_menu, 1) :
+                    boutton_menu = driver.find_elements(by = By.CLASS_NAME, value = 'menu')
+                    boutton_menu[k].click()
+                    Strings = driver.find_elements(by = By.TAG_NAME, value = 'p')
+                    for String in Strings : 
+                        txt_page = txt_page +  str(String.text)
+            
+            elif liste_name_page[j] == "Documentation" :
+                txt_page = ""
+                menu = driver.find_element(by = By.TAG_NAME, value = 'td')
+                len_menu = menu.find_elements(by = By.TAG_NAME, value = 'a')
+                len_menu = len(len_menu)
+                for k in range (0, len_menu, 1) :
+                    boutton_menu = driver.find_elements(by = By.CLASS_NAME, value = 'navig')
+                    boutton_menu[k].click()
+                    Strings = driver.find_elements(by = By.TAG_NAME, value = 'p')
+                    for String in Strings : 
+                        txt_page = txt_page +  str(String.text)
+
+            
+            elif liste_name_page[j] == "Galerie" :
+                txt_page = ""
+                Strings = driver.find_elements(by = By.TAG_NAME, value = 'a')
+                for String in Strings : 
+                    txt_page = txt_page +  str(String.text)
+
+
+            langue2 = langue_dict.get(detect(str(txt_page)))
             
             langue_detect_2.append(langue2)
             #print('La langue détecté sur le site est :')
