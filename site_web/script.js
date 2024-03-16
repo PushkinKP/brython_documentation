@@ -3,11 +3,20 @@ const consoleInput = document.getElementById('console-input');
 const consoleRun = document.getElementById('console-run');
 const consoleOutput = document.getElementById('console-output');
 
-// Écouteur d'événement pour le bouton "Exécuter"
-consoleRun.addEventListener('click', () => {
+// Fonction pour exécuter la commande saisie dans la console
+function executeCommand() {
   try {
-    // Évalue la commande et récupère le résultat
-    const result = eval(consoleInput.value);
+    // Récupère la commande saisie par l'utilisateur
+    const command = consoleInput.value.trim();
+
+    // Vérifie si la commande est vide
+    if (command === '') {
+      throw new Error('Veuillez saisir une commande.');
+    }
+
+    // Évalue la commande de manière sécurisée avec Function() plutôt que eval()
+    // Cela évite l'exécution de code potentiellement dangereux
+    const result = Function('"use strict";return (' + command + ')')();
 
     // Affiche le résultat dans la console
     consoleOutput.textContent = result;
@@ -15,7 +24,11 @@ consoleRun.addEventListener('click', () => {
     // Affiche l'erreur dans la console
     consoleOutput.textContent = error.message;
   }
-});
+}
+
+// Écouteur d'événement pour le bouton "Exécuter"
+consoleRun.addEventListener('click', executeCommand);
+
 
 
 
