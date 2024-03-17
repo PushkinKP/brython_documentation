@@ -121,3 +121,34 @@ img {
     width: 350px;
     height: 220px;
   }
+
+/* Style CSS pour la bordure de la section avec arrondi */
+#tutoriel-bordure {
+    border: 2px solid #000; /* bordure de 2 pixels de large, solide et noire */
+    border-radius: 10px; /* bordure arrondie avec un rayon de 10 pixels */
+    padding: 20px; /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
+}
+
+#tutoriel-code {
+    border: 2px solid #000; /* bordure de 2 pixels de large, solide et noire */
+    border-radius: 10px; /* bordure arrondie avec un rayon de 10 pixels */
+    padding: 20px; /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
+    background-color: #ccc; /* couleur de fond grise */
+}
+
+.tab {
+    margin-left: 40px; /* Espacement personnalisé pour simuler une tabulation */
+    display: inline-block; /* Pour que le span ne casse pas la ligne */
+}
+
+/* Style pour la liste avec des points personnalisés */
+ul.custom-list {
+    list-style-type: none; /* Supprimer les puces de la liste */
+    padding-left: 0; /* Supprimer le padding par défaut */
+}
+ul.custom-list li::before {
+    content: "•"; /* Utiliser un point comme marqueur */
+    color: red; /* Couleur des points */
+    font-weight: bold; /* Optionnel : mise en gras */
+    margin-right: 5px; /* Espacement entre le point et le texte */
+}
