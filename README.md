@@ -39,3 +39,10 @@ Nous utilisons le langage Python pour la collecte de données du site de Brython
 [NetworkX](https://networkx.org/documentation/stable/tutorial.html) est une bibliothèque qui permet de faire des graphiques orientés notamment pour la visualisation des liens et dépendances du site Brython.
 
 `pip install networkx`
+
+## Explications 
+
+[source, destination, langue]
+
+Page cachée = page qui n'as pas de destination 
+
