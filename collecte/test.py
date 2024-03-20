@@ -7,13 +7,16 @@ from selenium.webdriver.support.ui import Select
 from time import sleep
 import pandas as pd 
 from langdetect import detect
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get('https://brython.info/index.html')
 
 pages_principales = {
-    "Accueil": "",
+    "Accueil": "#banner_row > span.logo > a",
     "Tutoriel": "#banner_row > a:nth-child(2)",
     "Demo": "#banner_row > a:nth-child(3)", 
     "Documentation": "#banner_row > a:nth-child(4)", 
@@ -23,18 +26,26 @@ pages_principales = {
 }
 
 # Format des liens :
-# [src, dest, lang]
+# {(src, dest, lang)}
 
-liens = {}
+liens = set()
 
-for i in pages_principales.items():
-    driver.find_element(By.CSS_SELECTOR, i).click
+for nom, selecteur in pages_principales.items():
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, selecteur))
+    )
+    driver.find_element(By.CSS_SELECTOR, selecteur).click()
     sleep(2)
-    
-    for j in 
+
     src = driver.current_url
-    dest = driver.find_element(By.CSS_SELECTOR, i)
-    # lang = ??
-    liens.add([src, dest])
+    dest = nom
+    lang = detect(driver.page_source)
+
+    hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")} # set() de tous les liens du site
+    print(f"\n\nLiens de la page {src} :\n", hrefs)
+    
+    liens.add((src, dest, lang))
     
 print(liens)
+
+driver.quit()
