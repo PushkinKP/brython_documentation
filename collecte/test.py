@@ -38,13 +38,13 @@ for nom, selecteur in pages_principales.items():
     sleep(2)
 
     src = driver.current_url
-    dest = nom
     lang = detect(driver.page_source)
 
     hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")} # set() de tous les liens du site
     print(f"\n\nLiens de la page {src} :\n", hrefs)
     
-    liens.add((src, dest, lang))
+    for href in hrefs:
+        liens.add((src, href, lang))
     
 print(liens)
 
