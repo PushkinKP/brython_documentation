@@ -49,3 +49,6 @@ for nom, selecteur in pages_principales.items():
 print(liens)
 
 driver.quit()
+
+
+# Page cachée = page qui n'as plus de lien vers une autre page brython (https://brython...)
