@@ -29,6 +29,8 @@ pages_principales = {
 # {(src, dest, lang)}
 
 liens = set()
+liens_brython = set()
+liens_externe = set()
 
 for nom, selecteur in pages_principales.items():
     WebDriverWait(driver, 10).until(
@@ -41,12 +43,28 @@ for nom, selecteur in pages_principales.items():
     lang = detect(driver.page_source)
 
     hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")} # set() de tous les liens du site
-    print(f"\n\nLiens de la page {src} :\n", hrefs)
+    # print(f"\n\nLiens de la page {src} :\n", hrefs)
     
-    for href in hrefs:
-        liens.add((src, href, lang))
-    
-print(liens)
+    for dest in hrefs:
+        liens.add((src, dest, lang))
+        for i in dest:
+         p = p
+        
+        
+        '''
+        if dest is not None and "https://brython" in dest:
+            liens_brython.add((src, dest, lang))
+            if dest == "autre src":
+                break   
+        else:
+            liens_externe.add((src, dest, lang)) 
+        '''    
+liens = set(liens)
+liens_brython = set(liens_brython)
+liens_externe = set(liens_externe)
+#print(liens)
+print("\n", liens)
+print("\n", len(liens))
 
 driver.quit()
 
