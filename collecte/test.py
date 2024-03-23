@@ -4,14 +4,20 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
+
 from time import sleep
 import pandas as pd 
 from langdetect import detect
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# A ajouter pour le mode headless (sans interface graphique)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Ajouter options=chrome_options dans webdriver.Chrome
+driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
 
 driver.get('https://brython.info/index.html')
 

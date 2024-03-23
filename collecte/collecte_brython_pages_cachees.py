@@ -17,15 +17,6 @@ import pandas as pd
 
 # Scrapping
 
-'''
-A ajouter pour le mode headless (sans interface graphique)
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-
-Ajouter options=chrome_options dans webdriver.Chrome
-driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
-'''
-
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get("https://brython.info/index.html")

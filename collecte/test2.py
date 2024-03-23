@@ -7,19 +7,30 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
+# Ensemble global pour stocker les pages visitées
+visited_pages = set()
+
 # Fonction récursive pour collecter tous les liens à partir d'une page principale
-def collect_links(driver, page_url, lang, visited_pages, all_links):
+def collect_links(driver, page_url, lang, all_links):
     # Ajouter la page actuelle aux pages visitées
     visited_pages.add(page_url)
     
-    # Récupérer tous les liens de la page actuelle
-    hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")}
-    
-    for dest in hrefs:
-        if dest is not None and dest not in visited_pages:
-            all_links.add((page_url, dest, lang))
-            driver.get(dest)  # Aller à la page de destination
-            collect_links(driver, driver.current_url, lang, visited_pages, all_links)  # Appel récursif pour collecter les liens à partir de la page de destination
+    try:
+        # Récupérer l'URL actuelle
+        current_url = driver.current_url
+        # Récupérer tous les liens de la page actuelle
+        hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")}
+        
+        for dest in hrefs:
+            if dest is not None and dest not in visited_pages:
+                all_links.add((page_url, dest, lang))
+                if "https://brython" in dest:  # Vérifier si le lien mène à une page Brython
+                    driver.get(dest)  # Aller à la page de destination
+                    collect_links(driver, driver.current_url, lang, all_links)  # Appel récursif pour collecter les liens à partir de la page de destination
+    except Exception as e:
+        print("Une erreur s'est produite:", e)
+        pass  # Ignorer cette étape et passer à la prochaine itération
+
 
 # Initialiser le navigateur
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -49,14 +60,15 @@ for nom, selecteur in pages_principales.items():
     src = driver.current_url
     lang = detect(driver.page_source)
     
-    # Ensemble pour stocker les pages visitées
-    visited_pages = set()
     # Appeler la fonction récursive pour collecter tous les liens à partir de la page principale actuelle
-    collect_links(driver, src, lang, visited_pages, liens)
+    collect_links(driver, src, lang, liens)
 
-# Afficher tous les liens collectés
-print(liens)
-print("\nNombre total de liens:", len(liens))
+# Filtrer les liens pour ne garder que ceux menant à des pages Brython
+liens_brython = {lien for lien in liens if "https://brython" in lien[1]}
+
+# Afficher tous les liens collectés menant à des pages Brython
+print(liens_brython)
+print("\nNombre total de liens menant à des pages Brython:", len(liens_brython))
 
 # Fermer le navigateur
 driver.quit()
