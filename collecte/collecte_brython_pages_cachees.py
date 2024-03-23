@@ -10,11 +10,21 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 import bs4
 from time import sleep
 import pandas as pd 
 
 # Scrapping
+
+'''
+A ajouter pour le mode headless (sans interface graphique)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+Ajouter options=chrome_options dans webdriver.Chrome
+driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
+'''
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
