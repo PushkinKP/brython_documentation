@@ -1,7 +1,5 @@
 #Collecte de données sur le site internet de Brython
 
-#Nouveau commentaire test
-
 #Clément Husson
 
 #Importation des librairies
