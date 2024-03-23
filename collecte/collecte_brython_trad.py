@@ -9,6 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 from time import sleep
 import pandas as pd 
 from langdetect import detect
@@ -16,8 +17,10 @@ from langdetect import detect
 
 #Fonction principale qui détecte la langue de chaque page du site internet
 def detection_langue() :
-
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
+    
 
     #Liste des liens à scrapper sur le site
     liste_des_liens = ["https://brython.info/index.html", 
