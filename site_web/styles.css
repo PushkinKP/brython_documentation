@@ -1,14 +1,28 @@
+:root {
+    --main-text-color: #333;
+    --header-bg-color: #4CAF50;
+    --header-text-color: white;
+    --section-heading-color: #4CAF50;
+    --terminal-bg-color: #000000;
+    --terminal-text-color: #ffffff;
+    --terminal-border-color: #ffffff;
+    --custom-list-color: red;
+    --border-color: #000;
+    --border-radius: 10px;
+    --padding-size: 20px;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--main-text-color);
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: var(--header-bg-color);
     padding: 1rem;
     text-align: center;
     position: fixed;
@@ -20,7 +34,7 @@ header {
 }
 
 header h1 {
-    color: white;
+    color: var(--header-text-color);
     margin: 0;
 }
 
@@ -41,7 +55,7 @@ header nav ul li {
 }
 
 header nav a {
-    color: white;
+    color: var(--header-text-color);
     text-decoration: none;
 }
 
@@ -54,91 +68,24 @@ section {
 }
 
 section h2 {
-    color: #4CAF50;
+    color: var(--section-heading-color);
     margin-bottom: 1rem;
-}
-
-.numbered-list {
-    counter-reset: my-counter;
-    list-style-type: none;
-    padding: 0;
-}
-
-.numbered-list li {
-    counter-increment: my-counter;
-    margin-bottom: 0.5rem;
-}
-
-.numbered-list li::before {
-    content: counter(my-counter) ". ";
-    color: #4CAF50;
-    margin-right: 0.5rem;
-}
-
-#clock {
-    font-family: Arial, sans-serif;
-    color: #333;
-    font-size: 2em;
-    width: 100%;
-    text-align: center;
 }
 
 .terminal-box {
     width: 800px;
     height: 400px;
-    border: 1px solid #ffffff;
+    border: 1px solid var(--terminal-border-color);
     margin: 0 auto;
     padding: 10px;
     overflow: auto;
-    background-color: #000000;
+    background-color: var(--terminal-bg-color);
 }
 
 .terminal-prompt {
     white-space: pre;
     font-size: 14px;
-    color: #ffffff;
-}
-
-.terminal-input {
-    margin-top: 10px;
-}
-
-.terminal-input input {
-    width: 100%;
-    height: 30px;
-    border: none;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 5px;
-    font-size: 14px;
-}
-
-.terminal-input input::placeholder {
-    color: #ffffff;
-}
-
-img {
-    width: 350px;
-    height: 220px;
-  }
-
-/* Style CSS pour la bordure de la section avec arrondi */
-#tutoriel-bordure {
-    border: 2px solid #000; /* bordure de 2 pixels de large, solide et noire */
-    border-radius: 10px; /* bordure arrondie avec un rayon de 10 pixels */
-    padding: 20px; /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
-}
-
-#tutoriel-code {
-    border: 2px solid #000; /* bordure de 2 pixels de large, solide et noire */
-    border-radius: 10px; /* bordure arrondie avec un rayon de 10 pixels */
-    padding: 20px; /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
-    background-color: #ccc; /* couleur de fond grise */
-}
-
-.tab {
-    margin-left: 40px; /* Espacement personnalisé pour simuler une tabulation */
-    display: inline-block; /* Pour que le span ne casse pas la ligne */
+    color: var(--terminal-text-color);
 }
 
 /* Style pour la liste avec des points personnalisés */
@@ -148,7 +95,26 @@ ul.custom-list {
 }
 ul.custom-list li::before {
     content: "•"; /* Utiliser un point comme marqueur */
-    color: red; /* Couleur des points */
+    color: var(--custom-list-color); /* Couleur des points */
     font-weight: bold; /* Optionnel : mise en gras */
     margin-right: 5px; /* Espacement entre le point et le texte */
+}
+
+/* Style CSS pour la bordure de la section avec arrondi */
+#tutoriel-bordure {
+    border: 2px solid var(--border-color); /* bordure de 2 pixels de large, solide et noire */
+    border-radius: var(--border-radius); /* bordure arrondie avec un rayon de 10 pixels */
+    padding: var(--padding-size); /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
+}
+
+#tutoriel-code {
+    border: 2px solid var(--border-color); /* bordure de 2 pixels de large, solide et noire */
+    border-radius: var(--border-radius); /* bordure arrondie avec un rayon de 10 pixels */
+    padding: var(--padding-size); /* un peu de remplissage pour laisser de l'espace entre le contenu et la bordure */
+    background-color: #ccc; /* couleur de fond grise */
+}
+
+.tab {
+    margin-left: 40px; /* Espacement personnalisé pour simuler une tabulation */
+    display: inline-block; /* Pour que le span ne casse pas la ligne */
 }
