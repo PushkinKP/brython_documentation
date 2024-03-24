@@ -14,6 +14,7 @@ from time import sleep
 import pandas as pd 
 from langdetect import detect
 
+# -*- coding: utf-8 -*-
 
 #Fonction principale qui détecte la langue de chaque page du site internet
 def detection_langue() :
@@ -154,8 +155,10 @@ def detection_langue() :
                 print("\n")
                 print('La page '+ str(liste_name_page[j]) +' est traduite correctement')
                 nb_pages_traduites = nb_pages_traduites + 1
-            else : 
-                nb_pages_non_traduites = nb_pages_non_traduites + 1
+
+        if count != len(langue_detect_1) : 
+            nb_pages_non_traduites = nb_pages_non_traduites + 1
+
         print("Les langues détectées sur la page "+ str(liste_name_page[j]) +" sont : " + str(langue_detect))
         
     driver.quit()
@@ -165,4 +168,7 @@ def detection_langue() :
     print("\n Nombre de pages traduites correctement : " + str(nb_pages_traduites) + " sur " + str(nb_pages))
     print("\n Nombre de pages non traduites correctement : " + str(nb_pages_non_traduites) + " sur " + str(nb_pages))
 
+    return nb_pages_traduites, nb_pages, nb_pages_non_traduites
+
 detection_langue()
+
