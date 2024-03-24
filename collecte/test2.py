@@ -26,7 +26,9 @@ def collect_links(driver, page_url, lang, all_links):
                 all_links.add((page_url, dest, lang))
                 if "https://brython" in dest:  # Vérifier si le lien mène à une page Brython
                     driver.get(dest)  # Aller à la page de destination
+                    sleep(0.5)
                     collect_links(driver, driver.current_url, lang, all_links)  # Appel récursif pour collecter les liens à partir de la page de destination
+                    sleep(0.5)
     except Exception as e:
         print("Une erreur s'est produite:", e)
         pass  # Ignorer cette étape et passer à la prochaine itération
@@ -56,6 +58,13 @@ for nom, selecteur in pages_principales.items():
     )
     driver.find_element(By.CSS_SELECTOR, selecteur).click()
     sleep(2)
+
+    # Accepter l'alerte si elle apparaît
+    try:
+        alert = driver.switch_to.alert
+        alert.accept()
+    except:
+        pass  # Pas d'alerte, continuer normalement
 
     src = driver.current_url
     lang = detect(driver.page_source)
