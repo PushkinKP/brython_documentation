@@ -59,33 +59,25 @@ def detection_langue() :
         
         driver.get(lien)
 
-        sleep(0.5)
-
         boutton_langue = driver.find_element(by = By.XPATH, value = '/html/body/div[2]/select')
         boutton_langue.click()
 
         langue_detect_1 = []
         langue_detect_2 = []
 
-        sleep(0.5)
-
         selection = Select(driver.find_element(by=By.XPATH, value='/html/body/div[2]/select'))
         length = len(selection.options)
-
-        sleep(0.5)
 
         #Boucle qui détecte la langue sélectionnée de la page (Ajout de l'information dans la liste : langue_detect_1)
         for i in range (1, length + 1, 1) : 
             xpath = '/html/body/div[2]/select/option[' + str(i) + ']'
             langue1 = driver.find_element(by=By.XPATH, value=str(xpath)).text
             langue_detect_1.append(langue1)
-            sleep(0.5)
             
         #Boucle qui détecte la langue de la page à partir du texte (spécifique à chaque page)
         for i in range (0, length, 1) : 
             selection = Select(driver.find_element(by=By.XPATH, value='/html/body/div[2]/select'))
-            selection.select_by_index(i)
-            sleep(0.5)   
+            selection.select_by_index(i)   
 
             #Spécification pour chaque page 
             if liste_name_page[j] == "Principale" or liste_name_page[j] == "Tutoriel" :
@@ -171,4 +163,5 @@ def detection_langue() :
     return nb_pages_traduites, nb_pages, nb_pages_non_traduites
 
 detection_langue()
+
 
