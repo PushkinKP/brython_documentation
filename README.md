@@ -6,6 +6,12 @@ Ce projet s'inscrit dans le cadre du projet finale de 2ème année du BUT SD d'A
 
 Voir le [TODO.md](TODO.md)
 
+## Pour voir le site web
+
+Pour voir le site web créée pour ce projet, veuillez consulter ce lien : [https://pushkinkp.github.io/brython_documentation/](https://pushkinkp.github.io/brython_documentation/)
+
+Pour voir le code lié à ce site, veuillez consulter la branche website du GitHub du projet.
+
 ## Besoins pour ce projet
 
 Nous utilisons le langage Python pour la collecte de données du site de Brython, notamment grâce aux biliothèques Selenium, Pandas, LangDetect, Time et NetworkX.
