@@ -81,3 +81,6 @@ print("\nNombre total de liens menant à des pages Brython:", len(liens_brython)
 
 # Fermer le navigateur
 driver.quit()
+
+
+# Encore quelques problèmes d'alert box à accepter, mais les set() sont enfin remplis

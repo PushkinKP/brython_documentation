@@ -1,70 +1,98 @@
-#Collecte de données sur le site internet de Brython
+# Collecte de données sur le site internet de Brython
 
-#Importation des librairies
+# Attention : le script prend beaucoup de temps d'exécution car il collecte un grand nombre de données, veuillez passienter s'il vous plait
+
+
+
+# Importation des librairies
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from time import sleep
-import pandas as pd 
 from langdetect import detect
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+from time import sleep
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Ensemble global pour stocker les pages visitées
+visited_pages = set()
 
-pages = ["https://brython.info/index.html", 
-                       "https://brython.info/static_tutorial/fr/index.html", 
-                       "https://brython.info/demo.html",
-                       "https://brython.info/static_doc/3.12/fr/intro.html",
-                       "https://brython.info/gallery/gallery_fr.html",]
-
-
-liens_brython = set()
-liens_site = set()
-len = len("https://brython")
-
-for page in pages : 
-    driver.get(page)
-
-    liens = driver.find_elements(by = By.TAG_NAME, value = 'a')
+# Fonction récursive pour collecter tous les liens à partir d'une page principale
+def collect_links(driver, page_url, lang, all_links):
+    # Ajouter la page actuelle aux pages visitées
+    visited_pages.add(page_url)
     
-    for lien in liens:
-        lien2 = lien.get_attribute("href")
-        if lien2 is not None and (lien2[0:len] == "https://brython" or lien2[0:len] == "http://www.brython") :
-            liens_brython.add(lien2)
-        else :
-            liens_site.add(lien2)
-    
+    try:
+        # Récupérer l'URL actuelle
+        current_url = driver.current_url
+        # Récupérer tous les liens de la page actuelle
+        hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")}
+        
+        for dest in hrefs:
+            if dest is not None and dest not in visited_pages:
+                all_links.add((page_url, dest, lang))
+                if "https://brython" in dest:  # Vérifier si le lien mène à une page Brython
+                    driver.get(dest)  # Aller à la page de destination
+                    sleep(0.5)
+                    collect_links(driver, driver.current_url, lang, all_links)  # Appel récursif pour collecter les liens à partir de la page de destination
+                    sleep(0.5)
+    except Exception as e:
+        print("Une erreur s'est produite:", e)
+        pass  # Ignorer cette étape et passer à la prochaine itération
 
-print(liens_site)
+
+# A ajouter pour le mode headless (sans interface graphique)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+# Ajouter options=chrome_options dans webdriver.Chrome
+driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
+
+driver.get('https://brython.info/index.html')
+
+pages_principales = {
+    "Accueil": "#banner_row > span.logo > a",
+    "Tutoriel": "#banner_row > a:nth-child(2)",
+    "Demo": "#banner_row > a:nth-child(3)", 
+    "Documentation": "#banner_row > a:nth-child(4)", 
+    "Console": "#banner_row > a:nth-child(5)",
+    "Editeur": "#banner_row > a:nth-child(6)",
+    "Galerie": "#banner_row > a:nth-child(7)"
+}
+
+# Ensemble pour stocker tous les liens
+liens = set()
+
+for nom, selecteur in pages_principales.items():
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, selecteur))
+    )
+    driver.find_element(By.CSS_SELECTOR, selecteur).click()
+    sleep(2)
+
+    # Accepter l'alerte si elle apparaît
+    try:
+        alert = driver.switch_to.alert
+        alert.accept()
+    except:
+        pass  # Pas d'alerte, continuer normalement
+
+    src = driver.current_url
+    lang = detect(driver.page_source)
+    
+    # Appeler la fonction récursive pour collecter tous les liens à partir de la page principale actuelle
+    collect_links(driver, src, lang, liens)
+
+# Filtrer les liens pour ne garder que ceux menant à des pages Brython
+liens_brython = {lien for lien in liens if "https://brython" in lien[1]}
+
+# Afficher tous les liens collectés menant à des pages Brython
 print(liens_brython)
+print("\nNombre total de liens menant à des pages Brython:", len(liens_brython))
 
-
-
+# Fermer le navigateur
 driver.quit()
 
 
-
-
-
-
-
-
-
-
-'''
-Objectef est de collecter dans un premier temps tous les liens du site 
-Ensuite de cliquer sur les liens et de récupérer tous les sous liens 
-
-
-# Définir le set avec des chaînes de caractères
-mon_set = {"bonjour tout le monde", "salut", "bonjour à tous", "hello"}
-
-# Parcourir chaque élément du set
-for chaine in mon_set:
-    # Vérifier si la sous-chaîne "bonjour" est présente dans la chaîne actuelle
-    if "bonjour" in chaine:
-        # Afficher la chaîne de caractères contenant "bonjour"
-        print(chaine)
-'''
+# Encore quelques problèmes d'alert box à accepter, mais les set() sont enfin remplis
