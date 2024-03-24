@@ -47,6 +47,10 @@ def detection_langue() :
                     'nl': 'Nederlands',
                     'no': 'Brezhoneg'
                 }
+    
+    nb_pages = len(liste_name_page)
+    nb_pages_traduites = 0
+    nb_pages_non_traduites = 0
 
     #Boucle principale pour chaque page
     for j in range (0, len(liste_des_liens), 1) : 
@@ -132,12 +136,15 @@ def detection_langue() :
         #Le compteur (count) permet de vérifier si l'entièreté de la page est traduite correctement
         count = 0
         langue_detect = ""
+        
 
         #Boucle qui compare les deux listes pour vérifier si la langue détectée est la bonne
         for i in range (0, len(langue_detect_1), 1) :
             langue_detect = langue_detect +  str(langue_detect_1[i]) + " "
+
             if langue_detect_1[i] == langue_detect_2[i] :
                 count = count + 1
+
             else :
                 print("\n")
                 print('La page '+ str(liste_name_page[j]) +' n\'est pas traduite correctement')
@@ -146,10 +153,16 @@ def detection_langue() :
             if count == len(langue_detect_1) :
                 print("\n")
                 print('La page '+ str(liste_name_page[j]) +' est traduite correctement')
+                nb_pages_traduites = nb_pages_traduites + 1
+            else : 
+                nb_pages_non_traduites = nb_pages_non_traduites + 1
         print("Les langues détectées sur la page "+ str(liste_name_page[j]) +" sont : " + str(langue_detect))
         
     driver.quit()
 
     print("\n L'execution du programme est terminée")
+
+    print("\n Nombre de pages traduites correctement : " + str(nb_pages_traduites) + " sur " + str(nb_pages))
+    print("\n Nombre de pages non traduites correctement : " + str(nb_pages_non_traduites) + " sur " + str(nb_pages))
 
 detection_langue()
