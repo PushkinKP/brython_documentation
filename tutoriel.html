@@ -24,24 +24,21 @@
 
     <main>
         <div style="margin-top: 50px;"></div>
-        <section id="tutoriel">
+        <div id="tutoriel">
             <h2>Tutoriel</h2>
             <p>
                 Ce tutoriel vous explique comment développer une application qui s'exécute dans un navigateur 
                 en utilisant le langage Python. Nous prendrons comme exemple la construction d'une calculatrice.
-            </p>
-            <p>
+            
                 Vous aurez besoin d'un éditeur de texte, et naturellement d'un navigateur avec un accès à Internet.
-            </p>
-            <p>
+            
                 Le contenu de ce tutoriel suppose que vous avez une connaissance basique de HTML 
                 (structure générale d'une page, principales balises), des feuilles de style (CSS), et du langage Python.
-            </p>
-            <p>
+            
                 Dans l'éditeur de texte, créez une page html avec le contenu suivant :
             </p>
 
-            <section id="tutoriel-bordure">
+            <div id="tutoriel-bordure">
                 <p>
                     &lt;html&gt; <br><br>
         
@@ -66,19 +63,19 @@
                     
                     &lt;script type="text/python"&gt;
         
-                    <section id="tutoriel-code">
+                    <div id="tutoriel-code">
                         <p>
                             &lt;from browser import document&gt; <br><br>
                             
-                            &lt;document <= "Bonjour !"&gt;
+                            &lt;document = "Bonjour !"&gt;
                         </p>
-                    </section>
+                    </div>
                     &lt;/script&gt; <br> <br> <br>
         
                     &lt;/body&gt; <br> <br>
                     &lt;/html&gt; <br>
                 </p>
-              </section>
+              </div>
 
               <p>
                 Dans un répertoire vide, sauvegardez cette page sous le nom index.html. Pour lire cette 
@@ -114,13 +111,13 @@
                 Notre page index.html comporte ce script :
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code2">
                 <p>
                     from browser import document <br><br>
                     
                     document &lt;= "Bonjour !"
                 </p>
-            </section>
+            </div>
 
             <p>
                 Il s'agit d'une syntaxe Python classique, avec l'import d'un module, browser (en l'occurrence, un module 
@@ -131,11 +128,11 @@
                 la syntaxe utilisée par Brython est :
             </p>
             
-            <section id="tutoriel-code">
+            <div id="tutoriel-code3">
                 <p>
                     document &lt;= "Bonjour !"
                 </p>
-            </section>
+            </div>
 
             <p>
                 Il faut interpréter le signe &lt;= comme une flèche vers la gauche : le document "reçoit" un nouvel élément, 
@@ -145,11 +142,11 @@
                 Dans ce cas particulier, ceux qui ne sont pas à l'aise avec l'opérateur &lt;= peuvent utiliser la méthode attach() des éléments DOM à la place :
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code4">
                 <p>
                     document.attach("Bonjour !")
                 </p>
-            </section>
+            </div>
 
             <h3>Mise en forme avec les balises HTML</h3>
 
@@ -161,33 +158,33 @@
                 Voici comment l'utiliser:
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code5">
                 <p>
                     from browser import document, html <br> <br>
 
                     document &lt;= html.B("Bonjour !")
                 </p>
-            </section>
+            </div>
             
             <p>
                 Les balises peuvent être imbriquées :
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code6">
                 <p>
                     document &lt;= html.B(html.I("Bonjour !"))
                 </p>
-            </section>
+            </div>
 
             <p>
                 On peut aussi ajouter des balises les unes aux autres, ainsi que des chaines de caractères:
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code7">
                 <p>
                     document &lt;= html.B("Bonjour, ") + "tout le monde"
                 </p>
-            </section>
+            </div>
 
             <p>
                 Le premier argument d'une fonction balise peut être une chaine de caractères, un nombre, une autre balise. 
@@ -195,21 +192,21 @@
                 tous les éléments qui sont produits dans l'itération sont ajoutés à la balise:
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code8">
                 <p>
                     document &lt;= html.UL(html.LI(i) for i in range(5))
                 </p>
-            </section>
+            </div>
 
             <p>
                 Les attributs d'une balise sont passés sous forme d'arguments mots-clés de la fonction correspondante:
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code9">
                 <p>
                     html.A("Brython", href="http://brython.info")
                 </p>
-            </section>
+            </div>
 
             <h3>Dessin de la calculatrice</h3>
 
@@ -220,7 +217,7 @@
                 Les trois lignes suivantes sont les touches de la calculatrice, chiffres et opérations.
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code10">
                 <p>
                     &lt;from browser import document, html&gt; <br>
                     calc = html.TABLE() <br>
@@ -239,7 +236,7 @@
 
                     document &lt;= calc
                 </p>
-            </section>
+            </div>
         
             <p>
                 Notez l'utilisation de générateurs Python pour réduire la taille du code, tout en le maintenant lisible.
@@ -248,7 +245,7 @@
                 en ajoutant par exemple ceci dans la zone &lt;HEAD&gt; de notre page HTML:
             </p>
 
-            <section id="tutoriel-bordure">
+            <div id="tutoriel-bordure2">
                 &lt;style&gt; <br>
                     *{ <br>
                         <span class="tab"></span>
@@ -283,7 +280,7 @@
                         text-align: right; <br>
                     }
                     &lt;/style&gt;
-            </section>
+            </div>
 
             <h3>Gestion des événements</h3>
             <p>
@@ -310,11 +307,11 @@
                 pour obtenir une référence à l'ensemble de ces balises, la syntaxe est :
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code11">
                 <p>
                     document.select("td")
                 </p>
-            </section>
+            </div>
 
             <p>
                 L'argument passé à la méthode select() est un sélecteur CSS. Les plus courants sont : un nom de balise ("td"), 
@@ -326,24 +323,24 @@
                 L'association entre élément, événement et fonction est réalisée par la syntaxe
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code12">
                 <p>
                     element.bind("click", action)
                 </p>
-            </section>
+            </div>
 
             <p>
                 Pour la calculatrice, nous pouvons associer la même fonction à l'événement "click" sur tous les boutons par:
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code13">
                 <p>
                     for button in document.select("td"): <br>
                         <span class="tab"></span>
                         button.bind("click", action)
                 </p>
 
-            </section>
+            </div>
 
             <p>
                 Pour respecter la syntaxe Python, la fonction action() doit avoir été définie plus haut dans le programme. 
@@ -356,7 +353,7 @@
                 Voici le code permettant de gérer une version minimum de la calculatrice. L'essentiel est dans la fonction action(event).
             </p>
 
-            <section id="tutoriel-code">
+            <div id="tutoriel-code14">
                 <p>
                     from browser import document, html <br> <br>
 
@@ -427,8 +424,8 @@
                     <span class="tab"></span>
                         button.bind("click", action)
                 </p>
-            </section>
-        </section>
+            </div>
+        </div>
     </main>
       
     <footer>
