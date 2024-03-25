@@ -4,6 +4,15 @@ Ce projet s'inscrit dans le cadre du projet finale de 2ème année du BUT SD d'A
 
 Une des missions qui nous étaient demandé dans ce projet était de proposer une nouvelle version du site de la documentation brython en s'appuyant sur les suggestions de Monsieur Migdal via le GitHub de brython [https://github.com/brython-dev/brython/issues/2257](https://github.com/brython-dev/brython/issues/2257).
 
+Nous nous concentrerons principalement sur ces suggestions :
+
+- [Home] Why Brython (more info) ?
+- [Doc Menu] Change the structure of the documentation (I can get students on it for a project) (more info)
+- Add a link to the Github Wiki ?
+- + background-color of categories : more dark for better readability.
+- Use accordions in the menu (e.g. with details/summary HTML Elements)
+- Add a float:right or a sticky page menu at the top of pages for better browsing (more info)
+
 ## Branche gh-pages
 
 Cette branche est dédiée à la création du site web du projet pour pouvoir le présenter sur GitHub grâce à GitHub-Pages via ce lien : [https://pushkinkp.github.io/brython_documentation/](https://pushkinkp.github.io/brython_documentation/).
