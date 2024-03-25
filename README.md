@@ -6,12 +6,12 @@ Une des missions qui nous étaient demandé dans ce projet était de proposer un
 
 Nous nous concentrerons principalement sur ces suggestions :
 
-- [Home] Why Brython (more info) ?
-- [Doc Menu] Change the structure of the documentation (I can get students on it for a project) (more info)
+- [Home] Why Brython [(more info)](https://github.com/brython-dev/brython/issues/2257) ?
+- [Doc Menu] Change the structure of the documentation (I can get students on it for a project) [(more info)](https://groups.google.com/g/brython/c/9B_I9K7NGDA/m/qPo_4VRAAQAJ)
 - Add a link to the Github Wiki ?
 - + background-color of categories : more dark for better readability.
-- Use accordions in the menu (e.g. with details/summary HTML Elements)
-- Add a float:right or a sticky page menu at the top of pages for better browsing (more info)
+- Use accordions in the menu (e.g. with [details/summary HTML Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details))
+- Add a float:right or a sticky page menu at the top of pages for better browsing [(more info)](https://github.com/brython-dev/brython/issues/2257#issuecomment-1749373808)
 
 ## Branche gh-pages
 
