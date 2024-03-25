@@ -3,35 +3,25 @@ import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
 
-#G.add_edge("")
+# Lire les données à partir du fichier texte
+with open('liens_brython.txt', 'r') as f:
+    for line in f:
+        src, dest_lang = line.split(' -> ')
+        dest, lang = dest_lang.split(' (')
+        lang = lang.strip(')\n')
+        G.add_edge(src, dest)
 
+# Vérifier les nœuds sans voisins sortants
+no_out_neighbors = [node for node in G.nodes() if not any(G.successors(node))]
 
-page_principale = [("Page Principale", "Tutoriel"),
-                    ("Page Principale", "Démo"),
-                    ("Page Principale", "Documentation"), 
-                    ("Page Principale", "Console"), 
-                    ("Page Principale", "Editeur"), 
-                    ("Page Principale", "Galerie"), 
-                    ("Page Principale", "Ressources"),
-                    ("Page Principale", "Vitesse d'exécution"),
-                    ("Page Principale", "Wiki"),
-                    ("Page Principale", "Présentations brython"),
-                    ("Console", "Page Principale"),]
+plt.figure(figsize=(12, 8))
 
-tutoriel = [("Tutoriel", "Page Principale"), ("Tutoriel", "Démo"), ("Tutoriel", "Documentation"), ("Tutoriel", "Console"), ("Tutoriel", "Editeur"), ("Tutoriel", "Galerie"), ("Tutoriel", "Ressources")]
+# Dessiner les nœuds avec labels
+pos = nx.spring_layout(G, seed=42)
+nx.draw(G, pos, with_labels=True, node_size=1000, font_size=10, font_weight='bold')
 
-G.add_edges_from(page_principale)
-nx.draw_circular(G, with_labels=True, font_weight='bold')
+# Colorer les nœuds sans voisins (pages cachées) sortants en rouge
+nx.draw_networkx_nodes(G, pos, nodelist=no_out_neighbors, node_color='red', node_size=1000)
+
+plt.title("Graphe orienté des liens Brython")
 plt.show()
-
-
-#, "Documentation", "Console", "Editeur", "Galerie", "Ressources",  "Démo"
-
-#Ajouter des couleurs pour les parties non traduites, les parties cachées, etc...
-
-#Faire des listes avec chaque composants et dire a quoi il est relié 
-#Mettre toutes ces listes dans une liste (avec des sous listes)
-
-#faire un add_edge_from(nom de la liste)
-
-#choissir correctement le type de graphique

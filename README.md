@@ -48,7 +48,7 @@ Nous utilisons le langage Python pour la collecte de données du site de Brython
 
 ## Explications 
 
-[source, destination, langue]
+[(source, destination, langue)]
 
 Page cachée = page qui n'as pas de destination 
 
