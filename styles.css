@@ -38,6 +38,11 @@ header h1 {
     margin: 0;
 }
 
+header h1 a {
+    color: var(--header-text-color);
+    text-decoration: none;
+}
+
 header nav {
     display: inline-block;
 }
