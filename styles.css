@@ -7,12 +7,12 @@
     --terminal-text-color: #ffffff;
     --terminal-border-color: #ffffff;
     --custom-list-color: red;
-    --border-color: #2c2c2c;
+    --border-color: #a8a8a8;
     --border-radius: 10px;
     --padding-size: 20px;
-    --body-background-color: #e2e7f0;
-    --code-background-color: #c2c5c5;
-    --code-background-color-bis: #9fa1a1;
+    --body-background-color: #eaedf3;
+    --code-background-color: #d7dada;
+    --code-background-color-bis: #b8bbbb;
     --link-color: #1f2020;
     --details-background-color: #c0c2c2;
 }
@@ -48,7 +48,7 @@ body {
 
 header {
     background-color: var(--header-bg-color);
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     position: fixed;
     top: 0;
@@ -102,7 +102,9 @@ header nav a {
 }
 
 #flag {
-    padding-left: 500px;
+    position: fixed;
+    right: 0;
+    padding: 10px;
 }
 
 main {
@@ -151,27 +153,20 @@ ul.custom-list li::before {
     margin-right: 5px;
 }
 
-.tutoriel-bordure {
+.bordure {
     background-color: var(--code-background-color);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--padding-size); 
 }
 
-.tutoriel-code {
+.code {
     background-color: var(--code-background-color);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--padding-size); 
 }
 
-#tutoriel-code-bis, 
-#installation-code{
-    background-color: var(--code-background-color-bis);
-    border: 2px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: var(--padding-size); 
-}
 
 .tab {
     margin-left: 40px;
