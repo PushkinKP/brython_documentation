@@ -210,5 +210,6 @@ tbody tr td a {
 
 .details1 {
     background-color: var(--details-background-color);
-    border-radius: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
 }
