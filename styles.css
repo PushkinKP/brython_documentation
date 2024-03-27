@@ -1,5 +1,5 @@
 :root {
-    --main-text-color: #d9d9e0;
+    --main-text-color: #1f2020;
     --header-bg-color: #1878c2;
     --header-text-color: white;
     --section-heading-color: #84c0ee;
@@ -10,6 +10,9 @@
     --border-color: #2c2c2c;
     --border-radius: 10px;
     --padding-size: 20px;
+    --body-background-color: #e2e7f0;
+    --code-background-color: #c2c5c5;
+    --code-background-color-bis: #9fa1a1;
 }
 
 .dark { 
@@ -24,6 +27,9 @@
     --border-color: #2c2c2c; 
     --border-radius: 10px; 
     --padding-size: 20px; 
+    --body-background-color: #1f2020;
+    --code-background-color: #343636;
+    --code-background-color-bis: #545757;
 }
 
 body {
@@ -33,7 +39,7 @@ body {
     max-width: 70%;
     margin: 0 auto;
     padding: 3rem;
-    background-color: #1f2020;
+    background-color: var(--body-background-color);
 }
 
 header {
@@ -141,24 +147,25 @@ ul.custom-list li::before {
     margin-right: 5px;
 }
 
-#tutoriel-bordure,
-#tutoriel-code-bis,
-#tutoriel-code {
+.tutoriel-bordure {
+    background-color: var(--code-background-color);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--padding-size); 
 }
 
-.tutoriel-bordure {
-    background-color: #343636;
-}
-
 .tutoriel-code {
-    background-color: #343636;
+    background-color: var(--code-background-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-size); 
 }
 
 #tutoriel-code-bis {
-    background-color: #545757;
+    background-color: var(--code-background-color-bis);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-size); 
 }
 
 .tab {
