@@ -13,6 +13,8 @@
     --body-background-color: #e2e7f0;
     --code-background-color: #c2c5c5;
     --code-background-color-bis: #9fa1a1;
+    --link-color: #1f2020;
+    --details-background-color: #c0c2c2;
 }
 
 .dark { 
@@ -30,6 +32,8 @@
     --body-background-color: #1f2020;
     --code-background-color: #343636;
     --code-background-color-bis: #545757;
+    --link-color: #d9d9e0;
+    --details-background-color: #545757;
 }
 
 body {
@@ -111,7 +115,7 @@ div {
 }
 
 .selector {
-    color: #fff;
+    color: var(--link-color);
     margin-top: 10px;
 }
 
@@ -174,7 +178,7 @@ ul.custom-list li::before {
 }
 
 tbody tr td a {
-    color: #d9d9e0;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -209,5 +213,6 @@ tbody tr td a {
 }
 
 .details1 {
-    background-color: #343636;
+    background-color: var(--details-background-color);
+    border-radius: 10px;
 }
