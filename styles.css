@@ -1,13 +1,13 @@
 :root {
-    --main-text-color: #333;
-    --header-bg-color: #0B609F;
+    --main-text-color: #d9d9e0;
+    --header-bg-color: #1878c2;
     --header-text-color: white;
-    --section-heading-color: #0B609F;
-    --terminal-bg-color: #000000;
+    --section-heading-color: #1878c2;
+    --terminal-bg-color: #d9d9e0;
     --terminal-text-color: #ffffff;
     --terminal-border-color: #ffffff;
     --custom-list-color: red;
-    --border-color: #000;
+    --border-color: #2c2c2c;
     --border-radius: 10px;
     --padding-size: 20px;
 }
@@ -19,6 +19,7 @@ body {
     max-width: 80%;
     margin: 0 auto;
     padding: 3rem;
+    background-color: #1f2020;
 }
 
 header {
@@ -105,14 +106,23 @@ ul.custom-list li::before {
 }
 
 #tutoriel-bordure,
+#tutoriel-code-bis,
 #tutoriel-code {
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--padding-size); 
 }
 
+#tutoriel-bordure {
+    background-color: #343636;
+}
+
 #tutoriel-code {
-    background-color: #ccc;
+    background-color: #343636;
+}
+
+#tutoriel-code-bis {
+    background-color: #545757;
 }
 
 .tab {
@@ -121,7 +131,7 @@ ul.custom-list li::before {
 }
 
 tbody tr td a {
-    color: black;
+    color: #d9d9e0;
     text-decoration: none;
 }
 
@@ -159,6 +169,6 @@ tbody tr td a {
 
 .codearea pre::before {
     content: '>>>';
-    color: #0f0;
+    color: #9cd3ff;
     margin-right: 5px;
 }

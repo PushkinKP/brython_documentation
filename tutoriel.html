@@ -90,7 +90,7 @@
                         
                         &lt;script type="text/python"&gt;
             
-                        <div id="tutoriel-code">
+                        <div id="tutoriel-code-bis">
                             <p>
                                 &lt;from browser import document&gt; <br><br>
                                 
@@ -140,7 +140,7 @@
                     Notre page index.html comporte ce script :
                 </p>
 
-                <div id="tutoriel-code2">
+                <div id="tutoriel-code">
                     <p>
                         from browser import document <br><br>
                         
@@ -157,7 +157,7 @@
                     la syntaxe utilisée par Brython est :
                 </p>
                 
-                <div id="tutoriel-code3">
+                <div id="tutoriel-code">
                     <p>
                         document &lt;= "Bonjour !"
                     </p>
@@ -171,7 +171,7 @@
                     Dans ce cas particulier, ceux qui ne sont pas à l'aise avec l'opérateur &lt;= peuvent utiliser la méthode attach() des éléments DOM à la place :
                 </p>
 
-                <div id="tutoriel-code4">
+                <div id="tutoriel-code">
                     <p>
                         document.attach("Bonjour !")
                     </p>
@@ -189,7 +189,7 @@
                     Voici comment l'utiliser:
                 </p>
 
-                <div id="tutoriel-code5">
+                <div id="tutoriel-code">
                     <p>
                         from browser import document, html <br> <br>
 
@@ -201,7 +201,7 @@
                     Les balises peuvent être imbriquées :
                 </p>
 
-                <div id="tutoriel-code6">
+                <div id="tutoriel-code">
                     <p>
                         document &lt;= html.B(html.I("Bonjour !"))
                     </p>
@@ -211,7 +211,7 @@
                     On peut aussi ajouter des balises les unes aux autres, ainsi que des chaines de caractères:
                 </p>
 
-                <div id="tutoriel-code7">
+                <div id="tutoriel-code">
                     <p>
                         document &lt;= html.B("Bonjour, ") + "tout le monde"
                     </p>
@@ -223,7 +223,7 @@
                     tous les éléments qui sont produits dans l'itération sont ajoutés à la balise:
                 </p>
 
-                <div id="tutoriel-code8">
+                <div id="tutoriel-code">
                     <p>
                         document &lt;= html.UL(html.LI(i) for i in range(5))
                     </p>
@@ -233,7 +233,7 @@
                     Les attributs d'une balise sont passés sous forme d'arguments mots-clés de la fonction correspondante:
                 </p>
 
-                <div id="tutoriel-code9">
+                <div id="tutoriel-code">
                     <p>
                         html.A("Brython", href="http://brython.info")
                     </p>
@@ -250,7 +250,7 @@
                     Les trois lignes suivantes sont les touches de la calculatrice, chiffres et opérations.
                 </p>
 
-                <div id="tutoriel-code10">
+                <div id="tutoriel-code">
                     <p>
                         &lt;from browser import document, html&gt; <br>
                         calc = html.TABLE() <br>
@@ -278,7 +278,7 @@
                     en ajoutant par exemple ceci dans la zone &lt;HEAD&gt; de notre page HTML:
                 </p>
 
-                <div id="tutoriel-bordure2">
+                <div id="tutoriel-bordure">
                     &lt;style&gt; <br>
                         *{ <br>
                             <span class="tab"></span>
@@ -342,7 +342,7 @@
                     pour obtenir une référence à l'ensemble de ces balises, la syntaxe est :
                 </p>
 
-                <div id="tutoriel-code11">
+                <div id="tutoriel-code">
                     <p>
                         document.select("td")
                     </p>
@@ -358,7 +358,7 @@
                     L'association entre élément, événement et fonction est réalisée par la syntaxe
                 </p>
 
-                <div id="tutoriel-code12">
+                <div id="tutoriel-code">
                     <p>
                         element.bind("click", action)
                     </p>
@@ -368,7 +368,7 @@
                     Pour la calculatrice, nous pouvons associer la même fonction à l'événement "click" sur tous les boutons par:
                 </p>
 
-                <div id="tutoriel-code13">
+                <div id="tutoriel-code">
                     <p>
                         for button in document.select("td"): <br>
                             <span class="tab"></span>
@@ -390,7 +390,7 @@
                     Voici le code permettant de gérer une version minimum de la calculatrice. L'essentiel est dans la fonction action(event).
                 </p>
 
-                <div id="tutoriel-code14">
+                <div id="tutoriel-code">
                     <p>
                         from browser import document, html <br> <br>
 
