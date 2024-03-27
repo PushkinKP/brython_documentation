@@ -18,10 +18,17 @@ from langdetect import detect
 
 #Fonction principale qui détecte la langue de chaque page du site internet
 def detection_langue() :
+    
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
     
+    try : 
+        driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
+
+    except :
+        print('Erreur lors de l\'ouverture du navigateur')
+        return
+
 
     #Liste des liens à scrapper sur le site
     liste_des_liens = ["https://brython.info/index.html", 
@@ -59,8 +66,10 @@ def detection_langue() :
         
         driver.get(lien)
 
-        boutton_langue = driver.find_element(by = By.XPATH, value = '/html/body/div[2]/select')
-        boutton_langue.click()
+        sleep(1)
+
+        boutton_langue = driver.find_element(by = By.CLASS_NAME, value =  'language')
+        boutton_langue.click() 
 
         langue_detect_1 = []
         langue_detect_2 = []
@@ -160,7 +169,14 @@ def detection_langue() :
     print("\n Nombre de pages traduites correctement : " + str(nb_pages_traduites) + " sur " + str(nb_pages))
     print("\n Nombre de pages non traduites correctement : " + str(nb_pages_non_traduites) + " sur " + str(nb_pages))
 
-    return nb_pages_traduites, nb_pages, nb_pages_non_traduites
+    data = {
+        'Pages traduites' : [nb_pages_traduites],
+        'Pages non traduites' : [nb_pages_non_traduites],
+        'Total pages' : [nb_pages],
+    }
+    df = pd.DataFrame(data)
+    print(df)
+    df.to_csv('infos_pages_trad.csv', index = False)
 
 detection_langue()
 
