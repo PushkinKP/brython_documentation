@@ -12,6 +12,8 @@ Nous nous concentrerons principalement sur ces suggestions :
 - [x] + background-color of categories : more dark for better readability.
 - [x] Use accordions in the menu (e.g. with [details/summary HTML Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details))
 - [x] Add a float:right or a sticky page menu at the top of pages for better browsing [(more info)](https://github.com/brython-dev/brython/issues/2257#issuecomment-1749373808)
+- [ ] [Language] : replace the discrete select by a big flag image in the Brython menu ?
+- [ ] [Website Menu] : "getting Started" page outside of the doc ?
 
 ## Branche gh-pages
 

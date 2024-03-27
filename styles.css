@@ -2,7 +2,7 @@
     --main-text-color: #d9d9e0;
     --header-bg-color: #1878c2;
     --header-text-color: white;
-    --section-heading-color: #1878c2;
+    --section-heading-color: #84c0ee;
     --terminal-bg-color: #d9d9e0;
     --terminal-text-color: #ffffff;
     --terminal-border-color: #ffffff;
@@ -16,7 +16,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--main-text-color);
-    max-width: 80%;
+    max-width: 70%;
     margin: 0 auto;
     padding: 3rem;
     background-color: #1f2020;
@@ -24,14 +24,14 @@ body {
 
 header {
     background-color: var(--header-bg-color);
-    padding: 1rem;
+    padding: 20px;
     text-align: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 header h1 {
@@ -57,7 +57,12 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-left: 1rem;
+    margin-left: 4rem;
+}
+
+header nav details {
+    display: flex;
+    flex-direction: column;
 }
 
 header nav a {
@@ -65,17 +70,32 @@ header nav a {
     text-decoration: none;
 }
 
+.flag {
+    width: 30px;
+    height: auto;
+}
+
+#flag {
+    padding-left: 500px;
+}
+
 main {
     padding-top: 4rem;
 }
 
 div {
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-section h2 {
+.selector {
+    color: #fff;
+    margin-top: 10px;
+}
+
+h1, h2 {
     color: var(--section-heading-color);
-    margin-bottom: 1rem;
+    margin-top: 80px;
 }
 
 .terminal-box {
@@ -113,11 +133,11 @@ ul.custom-list li::before {
     padding: var(--padding-size); 
 }
 
-#tutoriel-bordure {
+.tutoriel-bordure {
     background-color: #343636;
 }
 
-#tutoriel-code {
+.tutoriel-code {
     background-color: #343636;
 }
 
@@ -135,19 +155,11 @@ tbody tr td a {
     text-decoration: none;
 }
 
-#intro h2 {
-    margin-top: 5rem;
-}
-
-#exemple_brython h2 {
-    margin-top: 5rem;
-}
-
 #disclaimer {
     font-style: italic;
     color: #999;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #console {
@@ -173,6 +185,6 @@ tbody tr td a {
     margin-right: 5px;
 }
 
-#details1 {
+.details1 {
     background-color: #343636;
 }

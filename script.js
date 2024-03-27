@@ -30,9 +30,6 @@ function executeCommand() {
 consoleRun.addEventListener('click', executeCommand);
 
 
-
-
-
 function updateClock() {
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, '0');
