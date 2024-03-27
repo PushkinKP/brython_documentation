@@ -1,8 +1,8 @@
 :root {
     --main-text-color: #333;
-    --header-bg-color: #4CAF50;
+    --header-bg-color: #0B609F;
     --header-text-color: white;
-    --section-heading-color: #4CAF50;
+    --section-heading-color: #0B609F;
     --terminal-bg-color: #000000;
     --terminal-text-color: #ffffff;
     --terminal-border-color: #ffffff;
@@ -121,7 +121,7 @@ ul.custom-list li::before {
 }
 
 tbody tr td a {
-    color: var(--header-text-color);
+    color: black;
     text-decoration: none;
 }
 
