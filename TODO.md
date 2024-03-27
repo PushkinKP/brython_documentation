@@ -24,5 +24,3 @@ Conception d'un prototype :
 - Respect de la charte du site de base
 - Ajouts des idées d'améliorations proposé par notre professeur
 
-
-## Partie 3 :
