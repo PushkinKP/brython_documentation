@@ -165,7 +165,8 @@ ul.custom-list li::before {
     padding: var(--padding-size); 
 }
 
-#tutoriel-code-bis {
+#tutoriel-code-bis, 
+#installation-code{
     background-color: var(--code-background-color-bis);
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
