@@ -1,6 +1,10 @@
-#Collecte de données sur le site internet de Brython
+'''
+Collecte de données web sur le site de Brython
 
-#Clément Husson
+Détection des pages traduites et non traduites sur le site de Brython
+
+'''
+
 
 #Importation des librairies
 from selenium import webdriver
@@ -11,17 +15,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from time import sleep
-import pandas as pd 
 from langdetect import detect
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# -*- coding: utf-8 -*-
 
-#Fonction principale qui détecte la langue de chaque page du site internet
+#Fonction principale qui détecte la langue de chaque page du site internet et produit un graphique récapilutatif
 def detection_langue() :
     
+    #Lors de l'execution du script le navigateur ouvert est masqué
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    
     try : 
         driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
 
@@ -174,10 +178,12 @@ def detection_langue() :
         'Pages non traduites' : [nb_pages_non_traduites],
         'Total pages' : [nb_pages],
     }
-    df = pd.DataFrame(data)
-    print(df)
-    df.to_csv('infos_pages_trad.csv', index = False)
+    
+    legende = ["Pages traduites", "Pages non traduites"]
+    data = [nb_pages_traduites, nb_pages_non_traduites]
+
+    plt.pie(data, labels = legende, autopct='%2f%%') 
+    plt.title('Diagramme circulaire des traductions des pages du site Brython')    
+    plt.show()     
 
 detection_langue()
-
-
