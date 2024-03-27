@@ -25,7 +25,7 @@ def on_node_click(event):
                 print("Nom du nœud:", node)
                 break
 
-plt.figure(figsize=(12, 8))
+plt.figure(figsize=(8, 6))
 
 # Dessiner les nœuds avec ou sans labels en fonction de l'option
 pos = nx.spring_layout(G, seed=42)
