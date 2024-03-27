@@ -36,8 +36,9 @@ header {
 
 header h1 {
     color: var(--header-text-color);
-    margin: 1rem;
+    margin: 0.25rem;
     font-size: 45px;
+    font-family: libraregular;
 }
 
 header h1 a {
@@ -55,11 +56,12 @@ header nav ul {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
 }
 
 header nav ul li {
     margin-left: 4.5rem;
+    
 }
 
 header nav a {
