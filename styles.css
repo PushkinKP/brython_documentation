@@ -12,6 +12,20 @@
     --padding-size: 20px;
 }
 
+.dark { 
+    --main-text-color: #d9d9e0; 
+    --header-bg-color: #1878c2; 
+    --header-text-color: white; 
+    --section-heading-color: #84c0ee; 
+    --terminal-bg-color: #d9d9e0; 
+    --terminal-text-color: #ffffff; 
+    --terminal-border-color: #ffffff; 
+    --custom-list-color: red; 
+    --border-color: #2c2c2c; 
+    --border-radius: 10px; 
+    --padding-size: 20px; 
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -36,7 +50,9 @@ header {
 
 header h1 {
     color: var(--header-text-color);
-    margin: 0;
+    margin: 0.2rem;
+    font-size: 45px;
+    font-family: libraregular;
 }
 
 header h1 a {
@@ -62,7 +78,7 @@ header nav ul li {
 
 header nav details {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 header nav a {
