@@ -1,29 +1,55 @@
-# Collecte de données sur Brython - Détection des pages cachées
+# Collecte de données sur le site internet de Brython
 
-# Jules Cnockaert
 
-# Packages
+# Attention : le script prend beaucoup de temps d'exécution car il collecte un grand nombre de données, veuillez passienter s'il vous plait
 
+
+# Importation des librairies
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
+from langdetect import detect
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-import bs4
 from time import sleep
-import pandas as pd 
 
-# Scrapping
+visited_pages = set()
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+# Fonction récursive pour collecter tous les liens à partir d'une page principale
+def collect_links(driver, page_url, lang, all_links):
+    visited_pages.add(page_url)
+    
+    try:
+        current_url = driver.current_url
+        # Récupérer tous les liens de la page actuelle
+        hrefs = {element.get_attribute('href') for element in driver.find_elements(By.TAG_NAME, "a")}
+        
+        for dest in hrefs:
+            if dest is not None and dest not in visited_pages:
+                all_links.add((page_url, dest, lang))
+                if "https://brython" in dest:  # Vérifier si le lien mène à une page Brython
+                    driver.get(dest)  # Aller à la page de destination
+                    sleep(1)
+                    collect_links(driver, driver.current_url, lang, all_links)  # Appel récursif pour collecter les liens à partir de la page de destination
+                    sleep(1)
+    except Exception as e:
+        print("Une erreur s'est produite:", e)
+        pass  # Ignorer cette étape et passer à la prochaine itération
 
-driver.get("https://brython.info/index.html")
 
-sleep(2)
+# A ajouter pour le mode headless (sans interface graphique)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
-links_pages = {
+# Ajouter options=chrome_options dans webdriver.Chrome
+driver = webdriver.Chrome(options=chrome_options, service=Service(ChromeDriverManager().install()))
+
+driver.get('https://brython.info/index.html')
+
+pages_principales = {
+    "Accueil": "#banner_row > span.logo > a",
     "Tutoriel": "#banner_row > a:nth-child(2)",
     "Demo": "#banner_row > a:nth-child(3)", 
     "Documentation": "#banner_row > a:nth-child(4)", 
@@ -32,51 +58,40 @@ links_pages = {
     "Galerie": "#banner_row > a:nth-child(7)"
 }
 
-hidden_links_all_pages = {}
-count_all = 0
-count_real_hidden = 0
+liens = set()
 
-for page_name, css_selector in links_pages.items():
-    driver.find_element(By.CSS_SELECTOR, css_selector).click()
+for nom, selecteur in pages_principales.items():
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, selecteur))
+    )
+    driver.find_element(By.CSS_SELECTOR, selecteur).click()
     sleep(2)
-    url_page = driver.current_url
+
+    # Accepter l'alerte si elle apparaît
+    try:
+        alert = driver.switch_to.alert
+        alert.accept()
+    except:
+        pass  # Pas d'alerte, continuer normalement
+
+    src = driver.current_url
+    lang = detect(driver.page_source)
     
-    soup = bs4.BeautifulSoup(driver.page_source, 'html.parser')
+    
+    collect_links(driver, src, lang, liens)
 
-    all_links = soup.find_all('a')
+# Filtrer les liens pour ne garder que ceux menant à des pages Brython
+liens_brython = {lien for lien in liens if "https://brython" in lien[1]}
 
-    hidden_links = []
-    real_hidden_links = []
-    for link in all_links:
-        href = link.get('href')
-        if href:
-            is_hidden = all(css_selector not in href for css_selector in links_pages.values())
-            if is_hidden:
-                hidden_links.append(href)
-                count_all += 1
-                if not href.startswith("https") and href not in ('/index.html', '/static_tutorial/fr/index.html', '/demo.html?lang=fr', '/static_doc/3.12/fr/intro.html', '/tests/console.html?lang=fr', '/tests/editor.html?lang=fr', '/gallery/gallery_fr.html'):
-                    real_hidden_links.append(href)
-                    count_real_hidden += 1
-
-    hidden_links_all_pages[page_name] = hidden_links
-
-print("Liens cachés pour toutes les pages :")
-for page_name, hidden_links in hidden_links_all_pages.items():
-    print("\n---------------------\n")
-    print("Page :", page_name, "\nUrl : ", url_page, "\n")
-    if hidden_links:
-        for hidden_link in hidden_links:
-            if hidden_link in real_hidden_links:
-                print("Page cachée :", hidden_link)
-            else:
-                print("Page externe :", hidden_link)
-    else:
-        print("Aucun lien caché trouvé sur cette page.")
-
-print("\n\nCompte total de pages cachées : ", count_all, "\nCompte de vrai pages cachées : ", count_real_hidden)
-print("\n\nVrais liens cachées : \n", real_hidden_links)
+print(liens_brython)
+print("\nNombre total de liens menant à des pages Brython:", len(liens_brython))
 
 driver.quit()
 
-# On se concentre uniquement sur les pages du sites cachées, les pages externe type GitHub ne seront pas comptabilisé, les vraies pages cachées sont les pages de Brython qui ne sont pas référencer directement (c'est-à-dire par des liens).
-# On ne comptabilise pas non plus ('/index.html', '/static_tutorial/fr/index.html', '/demo.html?lang=fr', '/static_doc/3.12/fr/intro.html', '/tests/console.html?lang=fr', '/tests/editor.html?lang=fr', '/gallery/gallery_fr.html') qui sont les pages principales du sites et donc par définition pas cachées
+# Etant donné que le script à un long temps d'execution, on sauvegarde les données importantes dans un txt
+output_file = "liens_brython.txt"
+
+with open(output_file, "w") as f:
+    for lien in liens_brython:
+        f.write(f"{lien[0]} -> {lien[1]} ({lien[2]})\n")
+        
