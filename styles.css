@@ -36,7 +36,8 @@ header {
 
 header h1 {
     color: var(--header-text-color);
-    margin: 0;
+    margin: 1rem;
+    font-size: 45px;
 }
 
 header h1 a {
@@ -54,10 +55,11 @@ header nav ul {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0.5rem;
 }
 
 header nav ul li {
-    margin-left: 1rem;
+    margin-left: 4.5rem;
 }
 
 header nav a {
