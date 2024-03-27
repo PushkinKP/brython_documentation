@@ -6,14 +6,40 @@
     <title>Tutoriel - Brython Documentation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="tutoriel">
     <header>
         <h1><a href="index.html">Brython</a></h1>
         <nav>
             <ul>
-                <li><a href="tutoriel.html">Tutoriel</a></li>
-                <li><a href="demo.html">Démo</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
+                <li>
+                  <details>
+                    <summary><a href="tutoriel.html">Tutoriel</a></summary>
+                    <ul>
+                      <li><a href="tutoriel.html#tutoriel_main">Introduction</a></li>
+                      <li><a href="tutoriel.html#structure_page">Structure d'une page</a></li>
+                      <li><a href="tutoriel.html#mise_forme">Mise en forme avec les balises HTML</a></li>
+                      <li><a href="tutoriel.html#gestion_event">Gestion des événements</a></li>
+                      <li><a href="tutoriel.html#programme_cmplt">Le programme complet</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="demo.html">Démo</a></summary>
+                    <ul>
+                      <li><a href="demo.html#demo">Démo</a></li>
+                      <li><a href="demo.html#clock">Horloge</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="documentation.html">Documentation</a></summary>
+                    <ul>
+                      <li><a href="documentation.html#documentation">Documentation</a></li>
+                    </ul>
+                  </details>
+                </li>
                 <li><a href="console.html">Console</a></li>
                 <li><a href="editeur.html">Editeur</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
@@ -25,405 +51,417 @@
     <main>
         <div style="margin-top: 50px;"></div>
         <div id="tutoriel">
-            <h2>Tutoriel</h2>
-            <p>
-                Ce tutoriel vous explique comment développer une application qui s'exécute dans un navigateur 
-                en utilisant le langage Python. Nous prendrons comme exemple la construction d'une calculatrice.
-            
-                Vous aurez besoin d'un éditeur de texte, et naturellement d'un navigateur avec un accès à Internet.
-            
-                Le contenu de ce tutoriel suppose que vous avez une connaissance basique de HTML 
-                (structure générale d'une page, principales balises), des feuilles de style (CSS), et du langage Python.
-            
-                Dans l'éditeur de texte, créez une page html avec le contenu suivant :
-            </p>
-
-            <div id="tutoriel-bordure">
+            <div id="tutoriel_main">
+                <h2>Tutoriel</h2>
                 <p>
-                    &lt;html&gt; <br><br>
-        
-                    &lt;head&gt; <br>
-                    <span class="tab"></span>
-                        &lt;meta charset="utf-8"&gt; <br>
-                    <span class="tab"></span>
-                        &lt;script type="text/javascript" <br>
-                    <span class="tab"></span> <span class="tab"></span>
-                            src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython.min.js"&gt; <br>
-                    <span class="tab"></span>
-                        &lt;/script&gt; <br>
-                    <span class="tab"></span>
-                        &lt;script type="text/javascript" <br>
-                    <span class="tab"></span> <span class="tab"></span>
-                            src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython_stdlib.js"&gt; <br>
-                    <span class="tab"></span>
-                        &lt;/script&gt; <br>
-                    &lt;/head&gt; <br><br>
-                    
-                    &lt;body&gt; <br><br>
-                    
-                    &lt;script type="text/python"&gt;
-        
-                    <div id="tutoriel-code">
-                        <p>
-                            &lt;from browser import document&gt; <br><br>
-                            
-                            &lt;document = "Bonjour !"&gt;
-                        </p>
-                    </div>
-                    &lt;/script&gt; <br> <br> <br>
-        
-                    &lt;/body&gt; <br> <br>
-                    &lt;/html&gt; <br>
-                </p>
-              </div>
-
-              <p>
-                Dans un répertoire vide, sauvegardez cette page sous le nom index.html. Pour lire cette 
-                page dans le navigateur, vous avez deux options:
-            </p>
-
-            <ul class="custom-list">
-                <li>
-                    utiliser le menu Fichier/Ouvrir du navigateur : c'est la solution la plus rapide. 
-                    Elle apporte quelques limitations pour un usage avancé, mais pour ce tutoriel 
-                    elle est parfaitement adaptée
-                </li>
-                <br>
-                <li>
-                    lancer un serveur web local : par exemple, si votre poste est équipé de la version 
-                    de Python disponible sur python.org, exécuter python -m http.server dans le répertoire 
-                    du fichier, puis entrer localhost:8000/index.html dans la barre d'adresse du navigateur
-                </li>
-            </ul>
-
-            <p>
-                En ouvrant la page, vous devriez voir le message "Bonjour !" s'afficher sur la page.
-            </p>
-
-            <h3>Structure d'une page</h3>
-
-            <p>
-                Analysons le contenu de cette page. Dans la zone &lt;head&gt; nous chargeons le script brython.js : <br>
-                c'est le moteur Brython, c'est-à-dire le programme qui va permettre d'exécuter les scripts Python <br>
-                qui se trouvent sur la page. Dans cet exemple nous allons le chercher sur un CDN, pour ne rien avoir à <br>
-                installer sur le PC. Notez le numéro de version (brython@3.12.2) : à chaque nouvelle version de Brython <br>
-                vous pourrez mettre à jour cette partie de l'adresse. <br> <br>
-                Notre page index.html comporte ce script :
-            </p>
-
-            <div id="tutoriel-code2">
-                <p>
-                    from browser import document <br><br>
-                    
-                    document &lt;= "Bonjour !"
-                </p>
-            </div>
-
-            <p>
-                Il s'agit d'une syntaxe Python classique, avec l'import d'un module, browser (en l'occurrence, un module 
-                livré par le moteur Brython en intégré dans le script brython.js). Ce module possède un attribut document 
-                qui représente le contenu qui s'affiche dans le navigateur. <br>
-    
-                Pour ajouter un texte au document - concrètement, pour afficher un texte dans le navigateur - 
-                la syntaxe utilisée par Brython est :
-            </p>
-            
-            <div id="tutoriel-code3">
-                <p>
-                    document &lt;= "Bonjour !"
-                </p>
-            </div>
-
-            <p>
-                Il faut interpréter le signe &lt;= comme une flèche vers la gauche : le document "reçoit" un nouvel élément, 
-                ici le texte "Bonjour !". Nous verrons plus loin qu'il est toujours possible d'utiliser la syntaxe normalisée 
-                pour interagir avec la page, mais Brython introduit quelques raccourcis pour rendre le code plus simple. <br>
+                    Ce tutoriel vous explique comment développer une application qui s'exécute dans un navigateur 
+                    en utilisant le langage Python. Nous prendrons comme exemple la construction d'une calculatrice.
                 
-                Dans ce cas particulier, ceux qui ne sont pas à l'aise avec l'opérateur &lt;= peuvent utiliser la méthode attach() des éléments DOM à la place :
-            </p>
-
-            <div id="tutoriel-code4">
-                <p>
-                    document.attach("Bonjour !")
-                </p>
-            </div>
-
-            <h3>Mise en forme avec les balises HTML</h3>
-
-            <p>
-                Les balises HTML permettent d'enrichir le texte, par exemple de le mettre 
-                en gras (balise &lt;B&gt;), en italique (&lt;I&gt;), etc. <br>
-
-                Avec Brython, ces balises sont disponibles sous forme de fonctions définies dans le module html du package browser. 
-                Voici comment l'utiliser:
-            </p>
-
-            <div id="tutoriel-code5">
-                <p>
-                    from browser import document, html <br> <br>
-
-                    document &lt;= html.B("Bonjour !")
-                </p>
-            </div>
-            
-            <p>
-                Les balises peuvent être imbriquées :
-            </p>
-
-            <div id="tutoriel-code6">
-                <p>
-                    document &lt;= html.B(html.I("Bonjour !"))
-                </p>
-            </div>
-
-            <p>
-                On peut aussi ajouter des balises les unes aux autres, ainsi que des chaines de caractères:
-            </p>
-
-            <div id="tutoriel-code7">
-                <p>
-                    document &lt;= html.B("Bonjour, ") + "tout le monde"
-                </p>
-            </div>
-
-            <p>
-                Le premier argument d'une fonction balise peut être une chaine de caractères, un nombre, une autre balise. 
-                Il peut aussi s'agir d'un "itérable" Python (une liste, une compréhension, un générateur) : dans ce cas, 
-                tous les éléments qui sont produits dans l'itération sont ajoutés à la balise:
-            </p>
-
-            <div id="tutoriel-code8">
-                <p>
-                    document &lt;= html.UL(html.LI(i) for i in range(5))
-                </p>
-            </div>
-
-            <p>
-                Les attributs d'une balise sont passés sous forme d'arguments mots-clés de la fonction correspondante:
-            </p>
-
-            <div id="tutoriel-code9">
-                <p>
-                    html.A("Brython", href="http://brython.info")
-                </p>
-            </div>
-
-            <h3>Dessin de la calculatrice</h3>
-
-            <p>
-                Nous pouvons dessiner notre calculatrice sous forme d'une table HTML. <br> <br>
-
-                La première ligne est constituée de la zone de résultats, suivi d'un bouton de remise à zéro. 
-                Les trois lignes suivantes sont les touches de la calculatrice, chiffres et opérations.
-            </p>
-
-            <div id="tutoriel-code10">
-                <p>
-                    &lt;from browser import document, html&gt; <br>
-                    calc = html.TABLE() <br>
-                    calc &lt;= html.TR(html.TH(html.DIV("0", id="result"), colspan=3) + <br>
-                    <span class="tab"></span> <span class="tab"></span>
-                            html.TD("C", id="clear")) <br>
-                    lines = ["789/", <br>
-                    <span class="tab"></span>
-                        "456*", <br>
-                    <span class="tab"></span>
-                        "123-", <br>
-                    <span class="tab"></span>
-                        "0.=+"] <br> <br>
-
-                    calc &lt;= (html.TR(html.TD(x) for x in line) for line in lines) <br> <br>
-
-                    document &lt;= calc
-                </p>
-            </div>
-        
-            <p>
-                Notez l'utilisation de générateurs Python pour réduire la taille du code, tout en le maintenant lisible.
-
-                Pour que le rendu soit plus lisible, il vaut mieux donner un style aux balises &lt;TD&gt;, 
-                en ajoutant par exemple ceci dans la zone &lt;HEAD&gt; de notre page HTML:
-            </p>
-
-            <div id="tutoriel-bordure2">
-                &lt;style&gt; <br>
-                    *{ <br>
-                        <span class="tab"></span>
-                        font-family: sans-serif; <br>
-                        <span class="tab"></span>
-                        font-weight: normal; <br>
-                        <span class="tab"></span>
-                        font-size: 1.1em; <br>
-                    } <br>
-                    td{ <br>
-                        <span class="tab"></span>
-                        background-color: #ccc; <br>
-                        <span class="tab"></span>
-                        padding: 10px 30px 10px 30px; <br>
-                        <span class="tab"></span>
-                        border-radius: 0.2em; <br>
-                        <span class="tab"></span>
-                        text-align: center; <br>
-                        <span class="tab"></span>
-                        cursor: default; <br>
-                    } <br>
-                    #result{ <br>
-                        <span class="tab"></span>
-                        border-color: #000; <br>
-                        <span class="tab"></span>
-                        border-width: 1px; <br>
-                        <span class="tab"></span>
-                        border-style: solid; <br>
-                        <span class="tab"></span>
-                        padding: 10px 30px 10px 30px; <br>
-                        <span class="tab"></span>
-                        text-align: right; <br>
-                    }
-                    &lt;/style&gt;
-            </div>
-
-            <h3>Gestion des événements</h3>
-            <p>
-                La prochaine étape est de déclencher une action quand l'utilisateur appuie sur les touches de la calculatrice :
-            </p>
-
-            <ul class="custom-list">
-                <li>
-                    pour les chiffres et les opérations : afficher le chiffre ou l'opération dans la zone de résultat
-                </li>
-                <br>
-                <li>
-                    pour le signe = : exécuter l'opération et afficher le résultat
-                </li>
-                <br>
-                <li>
-                    pour la lettre C : remise à zéro
-                </li>
-            </ul>
-
-            <p>
-                Pour gérer les différents éléments qu'il a affichés, le programme doit d'abord les référencer. Les différents 
-                boutons ont été créés sous la forme de balises &lt;TD&gt;; 
-                pour obtenir une référence à l'ensemble de ces balises, la syntaxe est :
-            </p>
-
-            <div id="tutoriel-code11">
-                <p>
-                    document.select("td")
-                </p>
-            </div>
-
-            <p>
-                L'argument passé à la méthode select() est un sélecteur CSS. Les plus courants sont : un nom de balise ("td"), 
-                l'attribut id de l'élément ("#result"), l'attribut "class" de la balise (".classname"). Le résultat de select() est 
-                toujours une liste d'éléments. <br> <br>
+                    Vous aurez besoin d'un éditeur de texte, et naturellement d'un navigateur avec un accès à Internet.
                 
-                Les événements qui se produisent sur les éléments d'une page ont un nom normalisé : quand on clique sur un bouton, 
-                l'événement appelé "click" est déclenché. Dans le programme, cet événement va provoquer l'exécution d'une fonction. 
-                L'association entre élément, événement et fonction est réalisée par la syntaxe
-            </p>
+                    Le contenu de ce tutoriel suppose que vous avez une connaissance basique de HTML 
+                    (structure générale d'une page, principales balises), des feuilles de style (CSS), et du langage Python.
+                
+                    Dans l'éditeur de texte, créez une page html avec le contenu suivant :
+                </p>
 
-            <div id="tutoriel-code12">
+                <div id="tutoriel-bordure">
+                    <p>
+                        &lt;html&gt; <br><br>
+            
+                        &lt;head&gt; <br>
+                        <span class="tab"></span>
+                            &lt;meta charset="utf-8"&gt; <br>
+                        <span class="tab"></span>
+                            &lt;script type="text/javascript" <br>
+                        <span class="tab"></span> <span class="tab"></span>
+                                src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython.min.js"&gt; <br>
+                        <span class="tab"></span>
+                            &lt;/script&gt; <br>
+                        <span class="tab"></span>
+                            &lt;script type="text/javascript" <br>
+                        <span class="tab"></span> <span class="tab"></span>
+                                src="https://cdn.jsdelivr.net/npm/brython@3.12.2/brython_stdlib.js"&gt; <br>
+                        <span class="tab"></span>
+                            &lt;/script&gt; <br>
+                        &lt;/head&gt; <br><br>
+                        
+                        &lt;body&gt; <br><br>
+                        
+                        &lt;script type="text/python"&gt;
+            
+                        <div id="tutoriel-code">
+                            <p>
+                                &lt;from browser import document&gt; <br><br>
+                                
+                                &lt;document = "Bonjour !"&gt;
+                            </p>
+                        </div>
+                        &lt;/script&gt; <br> <br> <br>
+            
+                        &lt;/body&gt; <br> <br>
+                        &lt;/html&gt; <br>
+                    </p>
+                </div>
+
                 <p>
-                    element.bind("click", action)
+                    Dans un répertoire vide, sauvegardez cette page sous le nom index.html. Pour lire cette 
+                    page dans le navigateur, vous avez deux options:
+                </p>
+
+                <ul class="custom-list">
+                    <li>
+                        utiliser le menu Fichier/Ouvrir du navigateur : c'est la solution la plus rapide. 
+                        Elle apporte quelques limitations pour un usage avancé, mais pour ce tutoriel 
+                        elle est parfaitement adaptée
+                    </li>
+                    <br>
+                    <li>
+                        lancer un serveur web local : par exemple, si votre poste est équipé de la version 
+                        de Python disponible sur python.org, exécuter python -m http.server dans le répertoire 
+                        du fichier, puis entrer localhost:8000/index.html dans la barre d'adresse du navigateur
+                    </li>
+                </ul>
+
+                <p>
+                    En ouvrant la page, vous devriez voir le message "Bonjour !" s'afficher sur la page.
                 </p>
             </div>
 
-            <p>
-                Pour la calculatrice, nous pouvons associer la même fonction à l'événement "click" sur tous les boutons par:
-            </p>
+            <div id="structure_page">
+                <h3>Structure d'une page</h3>
 
-            <div id="tutoriel-code13">
                 <p>
-                    for button in document.select("td"): <br>
-                        <span class="tab"></span>
-                        button.bind("click", action)
+                    Analysons le contenu de cette page. Dans la zone &lt;head&gt; nous chargeons le script brython.js : <br>
+                    c'est le moteur Brython, c'est-à-dire le programme qui va permettre d'exécuter les scripts Python <br>
+                    qui se trouvent sur la page. Dans cet exemple nous allons le chercher sur un CDN, pour ne rien avoir à <br>
+                    installer sur le PC. Notez le numéro de version (brython@3.12.2) : à chaque nouvelle version de Brython <br>
+                    vous pourrez mettre à jour cette partie de l'adresse. <br> <br>
+                    Notre page index.html comporte ce script :
                 </p>
 
-            </div>
+                <div id="tutoriel-code2">
+                    <p>
+                        from browser import document <br><br>
+                        
+                        document &lt;= "Bonjour !"
+                    </p>
+                </div>
 
-            <p>
-                Pour respecter la syntaxe Python, la fonction action() doit avoir été définie plus haut dans le programme. 
-                Elle prend un seul paramètre, un objet qui représente l'événement.
-            </p>
-
-            <h3>Le programme complet</h3>
-
-            <p>
-                Voici le code permettant de gérer une version minimum de la calculatrice. L'essentiel est dans la fonction action(event).
-            </p>
-
-            <div id="tutoriel-code14">
                 <p>
-                    from browser import document, html <br> <br>
+                    Il s'agit d'une syntaxe Python classique, avec l'import d'un module, browser (en l'occurrence, un module 
+                    livré par le moteur Brython en intégré dans le script brython.js). Ce module possède un attribut document 
+                    qui représente le contenu qui s'affiche dans le navigateur. <br>
+        
+                    Pour ajouter un texte au document - concrètement, pour afficher un texte dans le navigateur - 
+                    la syntaxe utilisée par Brython est :
+                </p>
+                
+                <div id="tutoriel-code3">
+                    <p>
+                        document &lt;= "Bonjour !"
+                    </p>
+                </div>
 
-                    # Construction de la calculatrice <br>
-                    calc = html.TABLE() <br>
-                    calc &lt;= html.TR(html.TH(html.DIV("0", id="result"), colspan=3) + <br>
-                    <span class="tab"></span> <span class="tab"></span>
-                                html.TD("C")) <br> <br>
-
-                    lines = ["789/", "456*", "123-", "0.=+"] <br> <br>
-
-                    calc &lt;= (html.TR(html.TD(x) for x in line) for line in lines) <br> <br>
-
-                    document &lt;= calc <br> <br>
-
-                    result = document["result"] # accès direct à un élément par son id <br> <br>
-
-                    def action(event): <br>
-                    <span class="tab"></span>
-                        """Gère l'événement "click" sur un bouton de la calculatrice.""" <br>
-                        <span class="tab"></span>
-                        # L'élément sur lequel l'utilisateur a cliqué est l'attribut "target" de <br>
-                        <span class="tab"></span>
-                        # l'objet event <br>
-                        <span class="tab"></span>
-                        element = event.target <br>
-                        <span class="tab"></span>
-                        # Le texte affiché sur le bouton est l'attribut "text" de l'élément <br>
-                        <span class="tab"></span>
-                        value = element.text <br>
-                        <span class="tab"></span>
-                        if value not in "=C": <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            # mise à jour du contenu de la zone "result" <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            if result.text in ["0", "erreur"]: <br>
-                        <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>    
-                                result.text = value <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            else: <br>
-                        <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
-                                result.text = result.text + value <br>
-                        <span class="tab"></span>
-                        elif value == "C": <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            # remise à zéro <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            result.text = "0" <br>
-                        <span class="tab"></span>
-                        elif value == "=": <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            # exécution de la formule saisie <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            try: <br>
-                        <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
-                                x = eval(result.text) <br>
-                        <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
-                                result.text = x <br>
-                        <span class="tab"></span> <span class="tab"></span>
-                            except: <br>
-                        <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
-                                result.text = "erreur" <br> <br>
-
+                <p>
+                    Il faut interpréter le signe &lt;= comme une flèche vers la gauche : le document "reçoit" un nouvel élément, 
+                    ici le texte "Bonjour !". Nous verrons plus loin qu'il est toujours possible d'utiliser la syntaxe normalisée 
+                    pour interagir avec la page, mais Brython introduit quelques raccourcis pour rendre le code plus simple. <br>
                     
-                    # Associe la fonction action() à l'événement "click" sur tous les boutons <br>
-                    # de la page. <br>
-                    for button in document.select("td"): <br>
-                    <span class="tab"></span>
-                        button.bind("click", action)
+                    Dans ce cas particulier, ceux qui ne sont pas à l'aise avec l'opérateur &lt;= peuvent utiliser la méthode attach() des éléments DOM à la place :
                 </p>
+
+                <div id="tutoriel-code4">
+                    <p>
+                        document.attach("Bonjour !")
+                    </p>
+                </div>
+            </div>
+
+            <div id="mise_forme">
+                <h3>Mise en forme avec les balises HTML</h3>
+
+                <p>
+                    Les balises HTML permettent d'enrichir le texte, par exemple de le mettre 
+                    en gras (balise &lt;B&gt;), en italique (&lt;I&gt;), etc. <br>
+
+                    Avec Brython, ces balises sont disponibles sous forme de fonctions définies dans le module html du package browser. 
+                    Voici comment l'utiliser:
+                </p>
+
+                <div id="tutoriel-code5">
+                    <p>
+                        from browser import document, html <br> <br>
+
+                        document &lt;= html.B("Bonjour !")
+                    </p>
+                </div>
+                
+                <p>
+                    Les balises peuvent être imbriquées :
+                </p>
+
+                <div id="tutoriel-code6">
+                    <p>
+                        document &lt;= html.B(html.I("Bonjour !"))
+                    </p>
+                </div>
+
+                <p>
+                    On peut aussi ajouter des balises les unes aux autres, ainsi que des chaines de caractères:
+                </p>
+
+                <div id="tutoriel-code7">
+                    <p>
+                        document &lt;= html.B("Bonjour, ") + "tout le monde"
+                    </p>
+                </div>
+
+                <p>
+                    Le premier argument d'une fonction balise peut être une chaine de caractères, un nombre, une autre balise. 
+                    Il peut aussi s'agir d'un "itérable" Python (une liste, une compréhension, un générateur) : dans ce cas, 
+                    tous les éléments qui sont produits dans l'itération sont ajoutés à la balise:
+                </p>
+
+                <div id="tutoriel-code8">
+                    <p>
+                        document &lt;= html.UL(html.LI(i) for i in range(5))
+                    </p>
+                </div>
+
+                <p>
+                    Les attributs d'une balise sont passés sous forme d'arguments mots-clés de la fonction correspondante:
+                </p>
+
+                <div id="tutoriel-code9">
+                    <p>
+                        html.A("Brython", href="http://brython.info")
+                    </p>
+                </div>
+            </div>
+
+            <div id="dessin_calc">
+                <h3>Dessin de la calculatrice</h3>
+
+                <p>
+                    Nous pouvons dessiner notre calculatrice sous forme d'une table HTML. <br> <br>
+
+                    La première ligne est constituée de la zone de résultats, suivi d'un bouton de remise à zéro. 
+                    Les trois lignes suivantes sont les touches de la calculatrice, chiffres et opérations.
+                </p>
+
+                <div id="tutoriel-code10">
+                    <p>
+                        &lt;from browser import document, html&gt; <br>
+                        calc = html.TABLE() <br>
+                        calc &lt;= html.TR(html.TH(html.DIV("0", id="result"), colspan=3) + <br>
+                        <span class="tab"></span> <span class="tab"></span>
+                                html.TD("C", id="clear")) <br>
+                        lines = ["789/", <br>
+                        <span class="tab"></span>
+                            "456*", <br>
+                        <span class="tab"></span>
+                            "123-", <br>
+                        <span class="tab"></span>
+                            "0.=+"] <br> <br>
+
+                        calc &lt;= (html.TR(html.TD(x) for x in line) for line in lines) <br> <br>
+
+                        document &lt;= calc
+                    </p>
+                </div>
+            
+                <p>
+                    Notez l'utilisation de générateurs Python pour réduire la taille du code, tout en le maintenant lisible.
+
+                    Pour que le rendu soit plus lisible, il vaut mieux donner un style aux balises &lt;TD&gt;, 
+                    en ajoutant par exemple ceci dans la zone &lt;HEAD&gt; de notre page HTML:
+                </p>
+
+                <div id="tutoriel-bordure2">
+                    &lt;style&gt; <br>
+                        *{ <br>
+                            <span class="tab"></span>
+                            font-family: sans-serif; <br>
+                            <span class="tab"></span>
+                            font-weight: normal; <br>
+                            <span class="tab"></span>
+                            font-size: 1.1em; <br>
+                        } <br>
+                        td{ <br>
+                            <span class="tab"></span>
+                            background-color: #ccc; <br>
+                            <span class="tab"></span>
+                            padding: 10px 30px 10px 30px; <br>
+                            <span class="tab"></span>
+                            border-radius: 0.2em; <br>
+                            <span class="tab"></span>
+                            text-align: center; <br>
+                            <span class="tab"></span>
+                            cursor: default; <br>
+                        } <br>
+                        #result{ <br>
+                            <span class="tab"></span>
+                            border-color: #000; <br>
+                            <span class="tab"></span>
+                            border-width: 1px; <br>
+                            <span class="tab"></span>
+                            border-style: solid; <br>
+                            <span class="tab"></span>
+                            padding: 10px 30px 10px 30px; <br>
+                            <span class="tab"></span>
+                            text-align: right; <br>
+                        }
+                        &lt;/style&gt;
+                </div>
+            </div>
+
+            <div id="gestion_event">
+                <h3>Gestion des événements</h3>
+                <p>
+                    La prochaine étape est de déclencher une action quand l'utilisateur appuie sur les touches de la calculatrice :
+                </p>
+
+                <ul class="custom-list">
+                    <li>
+                        pour les chiffres et les opérations : afficher le chiffre ou l'opération dans la zone de résultat
+                    </li>
+                    <br>
+                    <li>
+                        pour le signe = : exécuter l'opération et afficher le résultat
+                    </li>
+                    <br>
+                    <li>
+                        pour la lettre C : remise à zéro
+                    </li>
+                </ul>
+
+                <p>
+                    Pour gérer les différents éléments qu'il a affichés, le programme doit d'abord les référencer. Les différents 
+                    boutons ont été créés sous la forme de balises &lt;TD&gt;; 
+                    pour obtenir une référence à l'ensemble de ces balises, la syntaxe est :
+                </p>
+
+                <div id="tutoriel-code11">
+                    <p>
+                        document.select("td")
+                    </p>
+                </div>
+
+                <p>
+                    L'argument passé à la méthode select() est un sélecteur CSS. Les plus courants sont : un nom de balise ("td"), 
+                    l'attribut id de l'élément ("#result"), l'attribut "class" de la balise (".classname"). Le résultat de select() est 
+                    toujours une liste d'éléments. <br> <br>
+                    
+                    Les événements qui se produisent sur les éléments d'une page ont un nom normalisé : quand on clique sur un bouton, 
+                    l'événement appelé "click" est déclenché. Dans le programme, cet événement va provoquer l'exécution d'une fonction. 
+                    L'association entre élément, événement et fonction est réalisée par la syntaxe
+                </p>
+
+                <div id="tutoriel-code12">
+                    <p>
+                        element.bind("click", action)
+                    </p>
+                </div>
+
+                <p>
+                    Pour la calculatrice, nous pouvons associer la même fonction à l'événement "click" sur tous les boutons par:
+                </p>
+
+                <div id="tutoriel-code13">
+                    <p>
+                        for button in document.select("td"): <br>
+                            <span class="tab"></span>
+                            button.bind("click", action)
+                    </p>
+
+                </div>
+
+                <p>
+                    Pour respecter la syntaxe Python, la fonction action() doit avoir été définie plus haut dans le programme. 
+                    Elle prend un seul paramètre, un objet qui représente l'événement.
+                </p>
+            </div>
+
+            <div id="programme_cmplt">
+                <h3>Le programme complet</h3>
+
+                <p>
+                    Voici le code permettant de gérer une version minimum de la calculatrice. L'essentiel est dans la fonction action(event).
+                </p>
+
+                <div id="tutoriel-code14">
+                    <p>
+                        from browser import document, html <br> <br>
+
+                        # Construction de la calculatrice <br>
+                        calc = html.TABLE() <br>
+                        calc &lt;= html.TR(html.TH(html.DIV("0", id="result"), colspan=3) + <br>
+                        <span class="tab"></span> <span class="tab"></span>
+                                    html.TD("C")) <br> <br>
+
+                        lines = ["789/", "456*", "123-", "0.=+"] <br> <br>
+
+                        calc &lt;= (html.TR(html.TD(x) for x in line) for line in lines) <br> <br>
+
+                        document &lt;= calc <br> <br>
+
+                        result = document["result"] # accès direct à un élément par son id <br> <br>
+
+                        def action(event): <br>
+                        <span class="tab"></span>
+                            """Gère l'événement "click" sur un bouton de la calculatrice.""" <br>
+                            <span class="tab"></span>
+                            # L'élément sur lequel l'utilisateur a cliqué est l'attribut "target" de <br>
+                            <span class="tab"></span>
+                            # l'objet event <br>
+                            <span class="tab"></span>
+                            element = event.target <br>
+                            <span class="tab"></span>
+                            # Le texte affiché sur le bouton est l'attribut "text" de l'élément <br>
+                            <span class="tab"></span>
+                            value = element.text <br>
+                            <span class="tab"></span>
+                            if value not in "=C": <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                # mise à jour du contenu de la zone "result" <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                if result.text in ["0", "erreur"]: <br>
+                            <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>    
+                                    result.text = value <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                else: <br>
+                            <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
+                                    result.text = result.text + value <br>
+                            <span class="tab"></span>
+                            elif value == "C": <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                # remise à zéro <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                result.text = "0" <br>
+                            <span class="tab"></span>
+                            elif value == "=": <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                # exécution de la formule saisie <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                try: <br>
+                            <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
+                                    x = eval(result.text) <br>
+                            <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
+                                    result.text = x <br>
+                            <span class="tab"></span> <span class="tab"></span>
+                                except: <br>
+                            <span class="tab"></span> <span class="tab"></span> <span class="tab"></span>
+                                    result.text = "erreur" <br> <br>
+
+                        
+                        # Associe la fonction action() à l'événement "click" sur tous les boutons <br>
+                        # de la page. <br>
+                        for button in document.select("td"): <br>
+                        <span class="tab"></span>
+                            button.bind("click", action)
+                    </p>
+                </div>
             </div>
         </div>
     </main>

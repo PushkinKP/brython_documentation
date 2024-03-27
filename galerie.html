@@ -6,14 +6,40 @@
     <title>Galerie - Brython Documentation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="galerie_page">
     <header>
         <h1><a href="index.html">Brython</a></h1>
         <nav>
             <ul>
-                <li><a href="tutoriel.html">Tutoriel</a></li>
-                <li><a href="demo.html">Démo</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
+                <li>
+                  <details>
+                    <summary><a href="tutoriel.html">Tutoriel</a></summary>
+                    <ul>
+                      <li><a href="tutoriel.html#tutoriel_main">Introduction</a></li>
+                      <li><a href="tutoriel.html#structure_page">Structure d'une page</a></li>
+                      <li><a href="tutoriel.html#mise_forme">Mise en forme avec les balises HTML</a></li>
+                      <li><a href="tutoriel.html#gestion_event">Gestion des événements</a></li>
+                      <li><a href="tutoriel.html#programme_cmplt">Le programme complet</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="demo.html">Démo</a></summary>
+                    <ul>
+                      <li><a href="demo.html#demo">Démo</a></li>
+                      <li><a href="demo.html#clock">Horloge</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="documentation.html">Documentation</a></summary>
+                    <ul>
+                      <li><a href="documentation.html#documentation">Documentation</a></li>
+                    </ul>
+                  </details>
+                </li>
                 <li><a href="console.html">Console</a></li>
                 <li><a href="editeur.html">Editeur</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
@@ -26,12 +52,80 @@
         <div style="margin-top: 50px;"></div>
         <div id="galerie">
             <h2>Galerie</h2>
-            <p>
-                <img src="chemin/vers/ton/image.jpg" alt="Description de l'image">
-                <img src="chemin/vers/ton/image.jpg" alt="Description de l'image">
-                <img src="chemin/vers/ton/image.jpg" alt="Description de l'image">
-                <img src="chemin/vers/ton/image.jpg" alt="Description de l'image">
-            </p>
+            <table id="demos">
+                <tbody><tr>
+                <td valign="top">
+                <h3>Brython</h3>
+        
+                <a href="https://brython.info/gallery/hello.html">Hello world !</a>
+                <br><a href="https://brython.info/gallery/ajax.html">ajax</a>
+                <br><a href="https://brython.info/gallery/sort_table.html">tri de table</a>
+                <br><a href="https://brython.info/gallery/sort_table_template.html">tri de table
+                    </a>(utilise <a href="https://brython.info/gallery/calculator.html">template</a>)
+                <br><a href="https://brython.info/gallery/markdown_exec.html">calculatrice</a>
+                <br><a href="https://brython.info/gallery/markdown_exec.html">code Python exécutable dans une page markdown</a>
+                <br><a href="https://brython.info/gallery/inject_scripts.html">insertion dynamique de scripts dans la page</a>
+                <br>
+                <br><a href="https://brython.info/gallery/simulate_input.html">fonction input() personnalisée</a>
+                <br><a href="https://brython.info/gallery/simulate_input_dialog.html">fonction input() avec le package browser.widgets</a>
+                <br>
+                <br><a href="https://brython.info/gallery/webworker_mdn.html">Web Worker : exemple basique</a>
+                <br><a href="https://brython.info/gallery/mandelbrot_webworker.html">Web Worker : ensemble de Mandelbrot</a>
+                <br>
+                <br><a href="https://brython.info/gallery/webcomponent.html">Web Component (balise HTML personnalisée)</a>
+                <br>
+                <br><a href="https://brython.info/gallery/synth_keyboard.html">synthétiseur</a>
+                <br>
+                <br><a href="https://brython.info/gallery/svg_pie_chart.html">camembert SVG</a>
+                <br><a href="https://brython.info/gallery/solitaire.html">jeu de solitaire en SVG</a>
+                <br><a href="https://brython.info/gallery/sudoku.html">sudoku</a>
+                <br><a href="https://brython.info/gallery/geo.html" title="par François Dion">geolocalisation</a>
+                <br><a href="https://brython.info/gallery/iss_position.html">position de la Station Spatiale Internationale</a>
+        
+                <br><a href="https://brython.info/gallery/ruskey.html" title="par François Dion">clavier russe QWERTY</a>
+                <br><a href="https://brython.info/gallery/kanban.html" title="par Pedro Rodriguez">simulateur Kanban</a>
+                <br><a href="https://brython.info/gallery/battery.html" title="par Nicolas Pinault">charge de batterie</a>
+                <br><a href="https://brython.info/gallery/barcode.html" title="par Carl Smith">code barre</a>
+        
+                <br>
+                <br><a href="https://brython.info/gallery/library.html">IndexedDB: exemple basique</a>
+                <br><a href="https://brython.info/gallery/indexedDB_cache.html">IndexedDB: cache des modules Brython</a>
+                <br>
+                
+                <br><a href="https://brython.info/gallery/turtle.html">Turtle Graphics</a>
+                <br><a href="https://brython.info/gallery/clock.html">horloge analogique</a>
+                <br><a href="https://brython.info/gallery/europe.html">glisser-déposer</a>
+                <br><a href="https://brython.info/gallery/drop_files.html" title="par Glenn Linderman">glisser-déposer de fichiers</a>
+                <!-- <br><a href="sheet.html">stockage local</a> -->
+                <br><a href="https://brython.info/gallery/canvas_plot.html" title="par Kiko Correoso">Python plot sur le web</a>
+                <br><a href="https://brython.info/gallery/bricks_py.html">jeu de casse-briques</a>
+                <br><a href="https://brython.info/gallery/3Dwalker.html">animation 3D</a>
+        
+                <br><a href="taquin.html">taquin</a>
+                <br><a href="https://bmsleight.github.io/brython-blocks/" title="by Brendan Sleight">blocs qui tombent</a>
+        
+                </td>
+        
+                <td valign="top">
+                <h3>Interaction avec des librairies Javascript</h3>
+        
+                <a href="https://brython.info/gallery/taquin.html" title="par Dirk Krause">three.js (3D animation) : exemple basique</a>
+                <br><a href="https://brython.info/gallery/three.html">three.js: cubes interactifs</a>
+                <br>
+                <br><a href="https://brython.info/gallery/raphael/">Raphael (graphiques vectoriel)</a>
+                <br>
+                <br><a href="https://brython.info/gallery/highcharts/">Highcharts (courbes et graphes)</a>
+                <br>
+                <br><a href="https://brython.info/gallery/bokeh.html">Bokeh (graphes interactifs utilisant bokehJS)</a>
+                <br>
+                <br><a href="https://brython.info/gallery/test_vue.html">vue.js (canevas pour interfaces utilisateur)</a>
+                <br>
+                <br><a href="https://brython.info/gallery/phaser.html">Phaser (moteur de jeux)</a>
+                <br>
+                <br><a href="http://brython.info/gallery/babylon2_brython.html">Babylon (jeux et dessin 3D)</a>
+                </td>
+                </tr>
+                </tbody></table>
         </div>
     </main>
 

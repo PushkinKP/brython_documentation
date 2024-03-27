@@ -7,14 +7,40 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles_console.css">
 </head>
-<body>
+<body id="console_page">
     <header>
         <h1><a href="index.html">Brython</a></h1>
         <nav>
             <ul>
-                <li><a href="tutoriel.html">Tutoriel</a></li>
-                <li><a href="demo.html">Démo</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
+                <li>
+                  <details>
+                    <summary><a href="tutoriel.html">Tutoriel</a></summary>
+                    <ul>
+                      <li><a href="tutoriel.html#tutoriel_main">Introduction</a></li>
+                      <li><a href="tutoriel.html#structure_page">Structure d'une page</a></li>
+                      <li><a href="tutoriel.html#mise_forme">Mise en forme avec les balises HTML</a></li>
+                      <li><a href="tutoriel.html#gestion_event">Gestion des événements</a></li>
+                      <li><a href="tutoriel.html#programme_cmplt">Le programme complet</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="demo.html">Démo</a></summary>
+                    <ul>
+                      <li><a href="demo.html#demo">Démo</a></li>
+                      <li><a href="demo.html#clock">Horloge</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details>
+                    <summary><a href="documentation.html">Documentation</a></summary>
+                    <ul>
+                      <li><a href="documentation.html#documentation">Documentation</a></li>
+                    </ul>
+                  </details>
+                </li>
                 <li><a href="console.html">Console</a></li>
                 <li><a href="editeur.html">Editeur</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
@@ -27,17 +53,14 @@
         <div style="margin-top: 50px;"></div>
         <div id="console">
             <h2>Console</h2>
-            <div class="terminal-box">
-                <div class="terminal-prompt">C. Invite de commandes Microsoft Windows [ version 10.0.18362.836 ] ( c ) 2019 Microsoft Corporation . Tous droits réservés . C : \ Users \ herve > ப ></div>
-                <div class="terminal-input">
-                    <input type="text" placeholder="Entrez une commande...">
-                </div>
-            </div>
+            <div id="code" class="codearea" contenteditable=""><pre style="display: inline; white-space: pre-wrap;">Brython 3.12.3 on Netscape 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+            </pre><pre style="display: inline; white-space: pre-wrap;">Type "help", "copyright", "credits" or "license" for more information.
+            </pre><pre style="display: inline; white-space: pre-wrap;"></pre></div>
         </div>
     </main>
 
     <footer>
-        <p>Copyright © 2024 BRython Documentation</p>
+        <p>Copyright © 2024 Brython Documentation</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.96.5/brython.min.js"></script>
