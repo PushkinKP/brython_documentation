@@ -10,7 +10,7 @@ Voir le [TODO.md](TODO.md)
 
 Pour voir le site web créée pour ce projet, veuillez consulter ce lien : [https://pushkinkp.github.io/brython_documentation/](https://pushkinkp.github.io/brython_documentation/)
 
-Pour voir le code lié à ce site, veuillez consulter la branche website du GitHub du projet.
+Pour voir le code lié à ce site, veuillez consulter la branche website du GitHub du projet via ce lien [https://github.com/PushkinKP/brython_documentation/tree/website](https://github.com/PushkinKP/brython_documentation/tree/website) ou par l'onglet de choix de branche en haut à gauche du GitHub.
 
 ## Besoins pour ce projet
 
