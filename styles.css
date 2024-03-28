@@ -2,7 +2,7 @@
     --main-text-color: #1f2020;
     --header-bg-color: #1878c2;
     --header-text-color: white;
-    --section-heading-color: #84c0ee;
+    --section-heading-color: #59a2da;
     --terminal-bg-color: #d9d9e0;
     --terminal-text-color: #ffffff;
     --terminal-border-color: #ffffff;
@@ -17,7 +17,69 @@
     --details-background-color: #c0c2c2;
 }
 
-.dark { 
+label p {
+    margin-right: 10px;
+}
+
+.btn-toggle {
+    display: inline-block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px; /* Largeur réduite pour s'aligner avec le switch */
+    height: 20px; /* Hauteur réduite pour s'aligner avec le switch */
+    border-radius: 20px;
+    background: #ccc; /* Couleur de fond du switch */
+    border: 1px solid #ccc; /* Bordure du switch */
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-toggle::before {
+    content: '';
+    position: block;
+    width: 16px; /* Taille réduite pour s'adapter au switch */
+    height: 16px; /* Taille réduite pour s'adapter au switch */
+    border-radius: 50%;
+    background: #fff; /* Couleur du bouton du switch */
+    transition: 0.3s;
+    right: 4px; /* Ajustement pour le placement du bouton */
+}
+
+.btn-toggle::after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: #ececec;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+}
+
+.btn-toggle input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.btn-toggle .slider {
+    display: none; /* Cache le slider du switch */
+}
+
+/* Ajoutez ces styles pour modifier l'apparence du bouton en fonction de son état */
+.btn-toggle input:checked + .slider:before {
+    transform: translateX(20px); /* Décalage pour le bouton quand le switch est activé */
+    background-color: #2196F3; /* Couleur du bouton lorsque le switch est activé */
+}
+
+.btn-toggle input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3; /* Ajoute une ombre lorsque le switch est en focus */
+}
+
+body.dark {
     --main-text-color: #d9d9e0; 
     --header-bg-color: #1878c2; 
     --header-text-color: white; 
@@ -27,13 +89,28 @@
     --terminal-border-color: #ffffff; 
     --custom-list-color: red; 
     --border-color: #2c2c2c; 
-    --border-radius: 10px; 
-    --padding-size: 20px; 
     --body-background-color: #1f2020;
     --code-background-color: #343636;
     --code-background-color-bis: #545757;
     --link-color: #d9d9e0;
     --details-background-color: #545757;
+}
+
+body.dark .btn-toggle {
+    --main-text-color: #1f2020;
+    --header-bg-color: #1878c2;
+    --header-text-color: white;
+    --section-heading-color: #59a2da;
+    --terminal-bg-color: #d9d9e0;
+    --terminal-text-color: #ffffff;
+    --terminal-border-color: #ffffff;
+    --custom-list-color: red;
+    --border-color: #a8a8a8;
+    --body-background-color: #eaedf3;
+    --code-background-color: #d7dada;
+    --code-background-color-bis: #b8bbbb;
+    --link-color: #1f2020;
+    --details-background-color: #c0c2c2;
 }
 
 body {
@@ -167,6 +244,12 @@ ul.custom-list li::before {
     padding: var(--padding-size); 
 }
 
+#code-bis {
+    background-color: var(--code-background-color-bis);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-size); 
+}
 
 .tab {
     margin-left: 40px;
